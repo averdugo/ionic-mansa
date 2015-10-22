@@ -1,0 +1,46 @@
+<style>
+.bar-header{
+  display: flex;
+}
+</style>
+<ion-view id="cupons">
+    <ion-nav-title>
+        <img src="img/logo.png" class="logo">
+    </ion-nav-title>
+
+    <ion-content style="top:70px">
+      <div class="container"><h1>Manso Cupon</h1></div>
+        <div class="list list-cupons" ng-repeat="cupon in cupons">
+            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
+                <img src="img/promo1.jpg">
+                <h2 class="desc">{{cupon.description}}</h2>
+                <p class="price">${{cupon.price}}</p>
+                <p class="naMe">{{cupon.store.name}}</p>
+                <span class="badge ">{{cupon.store.distance | number:0}} m</span>
+            </a>
+        </div>
+
+     </ion-content>
+     <ion-footer>
+         <div class="tabs-striped tabs-color-balanced">
+             <div class="tabs">
+                 <a class="tab-item active" href="#">
+                     <img class="icon" src="../img/crear.png" alt="" style="    width: 32px;    height: 42px;    top: 5px;">
+                         Promos
+                 </a>
+                 <a class="tab-item" href="#/app/stores">
+                     <i class="icon ion-flag"></i>
+                         Locales
+                 </a>
+                 <a class="tab-item" href="#/app/mQr">
+                     <i class="icon ion-ios-list"></i>
+                         Cupones
+                 </a>
+                 <a class="tab-item" href="#/app/mQr">
+                     <i class="icon ion-ios-search"></i>
+                         Search
+                 </a>
+             </div>
+         </div>
+     </ion-footer>
+</ion-view>

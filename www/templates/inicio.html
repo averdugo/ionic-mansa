@@ -1,0 +1,39 @@
+<style>
+  .bar-header{
+    display: none;
+  }
+  #inicio{
+    background-image: url(img/fondo1.jpg);
+    background-size: cover;
+  }
+</style>
+
+<ion-view id="inicio">
+  <ion-content>
+    <div align="center" class="animated zoomIn">
+      <img src="img/logo1.png" alt="" style="width:50%">
+    </div>
+
+    <div class="list animated flipInY lista-fInit">
+      <form ng-submit="doLogin2()">
+          <label class="item item-input">
+            <span class="input-label">Usuario</span>
+            <input type="text" placeholder="Nombre" ng-model="loginData.username">
+          </label>
+          <label class="item item-input">
+            <span class="input-label" >Fecha de Nacimiento</span>
+            <input type="date" style="padding-top:0" ng-model="loginData.date">
+          </label>
+          <label class="item">
+            <button class="button button-block button-balanced" type="submit">Ingresar</button>
+          </label>
+      </form>
+      <label class="item">
+        <button class="button button-block button-positive" ng-click="fbLogin()">
+          Ingresa con Facebook
+        </button>
+    </label>
+    </div>
+
+  </ion-content>
+</ion-view>

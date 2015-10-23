@@ -1,6 +1,6 @@
 angular.module('starter')
 
-  .controller('CuponsController', function ($scope, $http, $ionicLoading, $cordovaGeolocation) {
+  .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, $cordovaGeolocation) {
         $ionicLoading.show({
            template: '<ion-spinner icon="ripple"></ion-spinner>'
         });
@@ -26,7 +26,17 @@ angular.module('starter')
              }, function(err) {
            // error
        });
+       $ionicModal.fromTemplateUrl('templates/search1.html', {
+         scope: $scope
+       }).then(function(modal) {
+         $scope.modal = modal;
+       });
 
-
+       $scope.search = function() {
+         $scope.modal.show();
+       };
+       $scope.closeSearch = function() {
+         $scope.modal.hide();
+       };
 
   });

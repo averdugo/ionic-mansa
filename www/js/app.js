@@ -98,6 +98,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
   // if none of the above states are matched, use this as the fallback
   if (window.localStorage['user']&&window.localStorage['device_id']) {
     $urlRouterProvider.otherwise('/app/playlists');
+
   }else {
       $urlRouterProvider.otherwise('/app/inicio');
   }

@@ -11,6 +11,15 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
   // Form data for the login modal
   $scope.loginData = {};
+  if (window.localStorage['user']&&window.localStorage['device_id']) {
+    var username = JSON.parse(localStorage["user"]);
+    $scope.userName=username.name;
+
+  }else {
+      
+  }
+
+
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {

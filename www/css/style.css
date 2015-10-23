@@ -2,9 +2,23 @@
 body{
     background-image: url(../img/background.png);
 }
+input{
+  color: white!important;
+}
+.list-search{
+  background-color: transparent;
+}
+.item-select select{
+      background-color: rgb(21,21,21);
+  color: white;
+}
+label.item.item-input.item-select {
+    margin: 30px auto;
+}
 .logo{
     width: 70%;
     margin-top: 10px;
+    max-width: 300px;
 }
 
 .bar .button.back-button{

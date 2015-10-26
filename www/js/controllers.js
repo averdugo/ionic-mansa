@@ -16,7 +16,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
     $scope.userName=username.name;
 
   }else {
-      
+
   }
 
 
@@ -117,20 +117,3 @@ angular.module('starter.controllers', ['ngOpenFB'])
 .controller('PlaylistsCtrl', function($scope) {
 
 })
-
-.controller('PlaylistCtrl', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal) {
-
-    var id= $stateParams.cuponId;
-    $ionicLoading.show({
-       template: '<ion-spinner icon="ripple"></ion-spinner>'
-    });
-    $http({
-        method: 'GET',
-        url: Server+"cupon/"+id
-    }).then(function successCallback(data) {
-        console.log(data.data);
-         $ionicLoading.hide();
-      }, function errorCallback(response) {
-        console.log(response)
-      });
-});

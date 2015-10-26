@@ -3,9 +3,9 @@ const Server="http://skizzordz.exis.cl:8000/";
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
+// the 2nd parameter is an array of 'requires',[]
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB'])
+angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB','ja.qr'])
 
     .run(function($ionicPlatform, ngFB) {
       ngFB.init({appId: '869739519812527'});
@@ -91,7 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
         views: {
               'menuContent': {
                   templateUrl: 'templates/cupon.html',
-                  controller: 'PlaylistCtrl'
+                  controller: 'CuponCtrl'
               }
         }
       });

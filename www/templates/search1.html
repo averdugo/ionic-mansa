@@ -25,7 +25,7 @@
     <form ng-submit="doSearch()">
       <div class="list list-inset list-search">
         <label class="item item-input">
-          <input type="text" placeholder="Search">
+          <input type="text" placeholder="Search" ng-model="searchData.q1">
           <i class="icon ion-search placeholder-icon" style="    padding-right: 14px;"></i>
 
         </label>
@@ -36,7 +36,7 @@
             <div class="input-label">
               Trago
             </div>
-            <select>
+            <select ng-model="searchData.q">
               <option value="Pisco">Pisco</option>
               <option value="Ron">Ron</option>
               <option value="Whisky">Whisky</option>
@@ -50,7 +50,7 @@
             <div class="input-label">
               Comuna
             </div>
-            <select>
+            <select ng-model="searchData.c">
               <option value="Santiago">Santiago</option>
               <option value="Las Condes">Las Condes</option>
               <option value="Providencia">Providencia</option>
@@ -62,18 +62,18 @@
             <div class="input-label">
               Precio
             </div>
-            <select>
-              <option value="0 - 4">$ 0 - 4,000</option>
-              <option value="4 - 10">$ 4,000 - 10,000</option>
-              <option value="10 - 20">$ 10,000 - 20,000</option>
-              <option value="20 - +">$ 20,000 - mas</option>
+            <select ng-model="searchData.p">
+              <option value="0 - 4000">$ 0 - 4,000</option>
+              <option value="4000 - 10000">$ 4,000 - 10,000</option>
+              <option value="10000 - 20000">$ 10,000 - 20,000</option>
+              <option value="20000 - +">$ 20,000 - mas</option>
             </select>
           </label>
           <label class="item item-input item-select">
             <div class="input-label">
               Local
             </div>
-            <select>
+            <select ng-model="searchData.t">
               <option value="Bar">Bar</option>
               <option value="Pub">Pub</option>
               <option value="Disco">Disco</option>

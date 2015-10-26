@@ -1,5 +1,79 @@
+<style>
+  h4{
+    text-align: center;
+    margin-bottom: -10px;
+
+  }
+  .mb{
+        margin-bottom: -10px;
+  }
+  .h-i{
+    font-size: 30px;
+    margin-top: -5px;
+  }
+</style>
 <ion-view view-title="">
-  <ion-content>
-    <h1>Playlist</h1>
+  <ion-nav-title>
+      <img src="img/logo.png" class="logo">
+    </ion-nav-title>
+  <ion-content style="top:61px">
+    <img src="img/promo2.png" alt="" style="width: 100%;">
+    <div class="row">
+      <div class="col" align="center">
+        <h4>{{cupon.description}}</h4>
+        <h4><strong style="color: #27da93;">{{cupon.price}}</strong></h4>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <img src="img/linep.png" alt="" style="width:95%;">
+    </div>
+    <div class="row">
+      <div class="col" align="center">
+        <h4><strong style="color: #27da93;">26</strong></h4>
+        <h6 class="mb">cupones generados</h6>
+      </div>
+      <div class="col" align="center">
+        <h4><strong style="color: #27da93;">{{cupon.stock}}</strong></h4>
+        <h6 class="mb">Stock</h6>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <img src="img/linep.png" alt="" style="width:95%;">
+    </div>
+    <div class="row">
+      <div class="col" align="center">
+        <h4 class="h-i"><strong style="color: #27da93;"><i class="icon ion-iphone"></i></strong></h4>
+        <h6 class="mb"><a id="telefono" href="tel:022 354 87 65">(02)2 354 87 65</a></h6>
+      </div>
+      <div class="col" align="center">
+        <h4 class="h-i"><strong style="color: #27da93;"><i class="icon ion-clock"></i></strong></h4>
+        <h6 class="mb"> Martes a jueves 11:00 - 00:30 hrs.<br>  Viernes y sábado 11:00 - 02:00 hrs.</h6>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <img src="img/linep.png" alt="" style="width:95%;">
+    </div>
+
+
+    <div class="row">
+      <div class="col" align="center">
+        <h3 class=""><strong style="color: #27da93;"><i class="icon ion-map"></i></strong>  {{cupon.store.address}}, {{cupon.store.comuna}}, {{cupon.store.region}}</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.436357439007!2d-70.57790050000001!3d-33.41186630000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf21db249b09%3A0xdf535cadec49fd62!2sAv.+Apoquindo+4900%2C+Las+Condes%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1443907885119" width="100%" height="300" frameborder="0" style="border:0;margin-top:10px;margin-bottom:10px" allowfullscreen></iframe>
+      </div>
+
+    </div>
+    <div style="text-align:center">
+      <img src="img/linep.png" alt="" style="width:95%;">
+    </div>
+
   </ion-content>
+  <ion-footer>
+      <div class="tabs-striped tabs-color-balanced">
+          <div class="tabs">
+            <button class="button button-block button-outline button-balanced" style="bottom: 11px;" ng-click="qrG({{cupon.id}})">
+              Obtener Cupon
+            </button>
+          </div>
+      </div>
+  </ion-footer>
 </ion-view>

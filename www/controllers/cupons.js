@@ -31,6 +31,8 @@ angular.module('starter')
        }).then(function(modal) {
          $scope.modal = modal;
        });
+       // Form data for the login modal
+       $scope.searchData = {};
 
        $scope.search = function() {
          $scope.modal.show();
@@ -38,5 +40,28 @@ angular.module('starter')
        $scope.closeSearch = function() {
          $scope.modal.hide();
        };
+       $scope.doSearch = function() {
+         $ionicLoading.show({
+            template: '<ion-spinner icon="ripple"></ion-spinner>'
+         });
 
+         var q = $scope.searchData.q1
+         //var q = $scope.searchData.q1
+         var c = $scope.searchData.c
+         var p = $scope.searchData.p
+         var t = $scope.searchData.t
+
+         $http.get(Server+"cupon?q="+q).success(function (data) {
+              $scope.cupons=data;
+              $ionicLoading.hide();
+         }).error(function (err) {
+               $ionicLoading.show({
+                     template: 'No Se encuentra Geolocalizacion',
+                     duration: 3000
+               });
+         });
+
+         $scope.modal.hide();
+
+       };
   });

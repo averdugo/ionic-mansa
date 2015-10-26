@@ -1,0 +1,39 @@
+<style>
+.modal{
+  background-color: #000;
+  background-image: url(img/background.png);
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+
+}
+.logo{
+  max-width: 160px;
+    margin-top: 11px;
+}
+h1.title {
+    left: 0!important;
+}
+</style>
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title" style="width:100%;left:0!importantright: 0;"><img src="img/logo.png" class="logo"></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeqrG()">Cerrar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="margin-top:20px;">
+    <div style="background-color:#fff;padding:10px auto;text-align:center">
+      <br>
+        <qr text="string" correction-level="'H'"></qr>
+      <br>
+      <br>
+    </div>
+    <div>
+      <h3 style="text-align:center;padding:10px;color: #27da93;"><strong>Muestra este codigo en el lugar establecido para Canjear</strong></h3>
+      <button class="button button-block button-outline button-balanced" style="bottom: 11px;" ng-click="saveQr({{cupon.id}})">
+        Guardar Cupon
+      </button>
+      <p style="text-align:center;color:#cd1f3f">Qr unico y valido solo con esta promo</p>
+    </div>
+  </ion-content>
+</ion-modal-view>

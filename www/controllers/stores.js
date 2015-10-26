@@ -14,8 +14,7 @@ angular.module('starter')
 
                    $http.get(Server+"store?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
                         $scope.stores=data;
-                        console.log($scope.stores)
-                         $ionicLoading.hide();
+                        $ionicLoading.hide();
                    }).error(function (err) {
                          $ionicLoading.show({
                                template: 'No Se encuentra Geolocalizacion',

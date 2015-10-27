@@ -23,27 +23,31 @@ angular.module('starter')
     };
 
     $scope.closeqrG = function() {
-    };
         $scope.modal.hide();
+    };
+
 
     $scope.saveQr = function() {
         var uuid = localStorage["device_id"];
         var cupon_id= $stateParams.cuponId;
-        var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
-        db.transaction(function (tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS CUPON (uuid VARCHAR, cupon_id INTEGER, is_redimp INTEGER)');
-            tx.executeSql('INSERT INTO CUPON (uuid, cupon_id, is_redimp) VALUES (?, ?, 0)',[uuid, cupon_id]);
-        });
+        var sCupon = {
+          "uuid" : uuid,
+          "cupon_id" : cupon_id
+        }
+
+        var a = [];
+        if (localStorage.getItem('cupones')) {
+          alert("ok");
+          a = JSON.parse(localStorage.getItem('cupones'));
+        }
+
+        a.push(sCupon);
+        localStorage.setItem('cupones', JSON.stringify(a));
+
         $scope.modal.hide();
     };
 
-    $scope.leerQr=function(){
-        $cordovaBarcodeScanner.scan().then(function(barcodeData){
-            console.log(barcodeData);
-        },function(error){
-            console.log(error);
-        });
-    }
+
 
     $http({
         method: 'GET',

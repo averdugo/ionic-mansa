@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngOpenFB'])
 
-.controller('AppCtrl', function($scope, $http, $ionicModal, $timeout, ngFB, $ionicLoading) {
+.controller('AppCtrl', function($scope, $http, $ionicModal, $timeout, ngFB, $ionicLoading,$cordovaBarcodeScanner) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -19,6 +19,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
   }
 
+  $scope.leerQr=function(){
+      $cordovaBarcodeScanner.scan().then(function(barcodeData){
+          console.log(barcodeData);
+      },function(error){
+          console.log(error);
+      });
+  }
 
 
   // Create the login modal that we will use later

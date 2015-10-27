@@ -8,6 +8,9 @@ input{
 .list-search{
   background-color: transparent;
 }
+.desc{
+  white-space: normal!important;
+}
 .item-select select{
       background-color: rgb(21,21,21);
   color: white;

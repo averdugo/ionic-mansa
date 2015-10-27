@@ -19,13 +19,19 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
+        <ion-item menu-close href="#/app/cupons">
+          Cupones
+        </ion-item>
+        <ion-item menu-close href="#/app/mcupons">
+          Mis Cupones
+        </ion-item>
+        <ion-item menu-close ng-click="leerQr()">
+          Scan
+        </ion-item>
         <ion-item menu-close ng-click="login()">
           Ingreso
         </ion-item>
 
-        <ion-item menu-close href="#/app/search">
-          Busqueda Avanzada
-        </ion-item>
         <ion-item menu-close href="#/app/browse">
           Salir
         </ion-item>

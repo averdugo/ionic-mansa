@@ -12,7 +12,7 @@ input{
   white-space: normal!important;
 }
 .item-select select{
-      background-color: rgb(21,21,21);
+    background-color: rgb(21,21,21);
   color: white;
 }
 label.item.item-input.item-select {
@@ -44,7 +44,7 @@ label.item.item-input.item-select {
     background-image: url(../img/perfiles.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 100% 80%;
+    background-position: 100% 80%;*/
     margin-top: 0px!important;
 }
 .lista-inicio a.item{
@@ -61,7 +61,7 @@ label.item.item-input.item-select {
     color: white;
 }
 .pane, .view{
-    background-image: url(../img/background.png);
+    background-color: #333;
 }
 .menu{
     background-color: rgb(21,21,21);
@@ -76,7 +76,7 @@ label.item.item-input.item-select {
     background-size: cover;
 }
 .bar-header{
-    background-image: url('../img/header.png')!important;
+    background-image: url('../img/background.png')!important;
     height: 61px;
 
 }
@@ -127,18 +127,20 @@ label.item.item-input.item-select {
     color: white;
 }
 .lista-fInit .item{
-    background-color: rgba(21,21,21,0.65);
+    background-color: rgba(21,21,21,0.25);
     padding: 5px 20px;
 }
 .tabs-striped .tabs{
-  background-image: url('../img/header.png')!important;
-background-size: cover;
-background-color: transparent;
+background-color: #55348c;
 }
 .tabs-striped .tabs i{
-  color: #259c85;
+  color: #fff;
 }
-
+.i-cupon{
+  width: 55%;
+height: auto!important;
+margin-top: -2px!important;
+}
 #cupons span.badge.ng-binding {
     right: 0;
     top: 60px;
@@ -146,7 +148,7 @@ background-color: transparent;
 #cupons p.naMe{
   position: absolute;
   bottom: 17px;
-  color: #259c85;
+      color: #e60e7b;
 }
 #cupons h2.desc{
   width: 70%;
@@ -158,11 +160,12 @@ white-space: pre-line;
 font-size: 16px;
 position: absolute;
 right: 8px;
-color: #259c85;
+    color: #e60e7b;
 }
 #cupons .list{
   margin: 0;
-  border-color: #ddd;
+  border: 1px solid #ddd;
+    border-style: none none solid none;
 }
 #cupons .item-thumbnail-left{
   padding-top: 16px;
@@ -172,25 +175,9 @@ h1 {
   padding: 0 15px;
   position: relative;
   color: white;
-  font-size: 30px;
+  font-size: 24px;
 }
 
-h1:before,
-h1:after {
-  background: #ddd;
-  content: "";
-  display: block;
-  height: 1px;
-  position: absolute;
-    top: 50%;
-  width: 400%;
-}
-h1:before {
-  right: 100%;
-}
-h1:after {
-  left: 100%;
-}
 .container {
   overflow: hidden;
   text-align: center;

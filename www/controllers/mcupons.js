@@ -2,8 +2,9 @@ angular.module('starter')
 
   .controller('mCuponsController', function ($scope, $http, $ionicLoading, $ionicModal, CuponResource, $filter) {
       $scope.string="";
-      
-      if (localStorage["cupones"]) {
+
+
+
         var cuponStorage= JSON.parse(localStorage["cupones"]);
         var idArray = [];
         $scope.string ="";
@@ -14,7 +15,7 @@ angular.module('starter')
         CuponResource.getCupon(idArray).then(function(data){
             $scope.codigos=data.data;
         });
-      }
+      
 
 
         $ionicModal.fromTemplateUrl('templates/qrG1.html', {

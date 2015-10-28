@@ -13,6 +13,12 @@
 h1.title {
     left: 0!important;
 }
+.text-Qr{
+  text-align: center;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+}
 </style>
 <ion-modal-view>
   <ion-header-bar>
@@ -29,11 +35,11 @@ h1.title {
       <br>
     </div>
     <div>
-      <h3 style="text-align:center;padding:10px;color: #27da93;"><strong>Muestra este codigo en el lugar establecido para Canjear</strong></h3>
-      <button class="button button-block button-outline button-balanced" style="bottom: 11px;" ng-click="saveQr({{cupon.id}})">
+      <h3 class="text-Qr" ><strong>Muestra este codigo en el local establecido para Canjear</strong></h3>
+      <button class="button button-block  button-balanced" style="bottom: 11px;width: 80%; margin: 0 auto;" ng-click="saveQr({{cupon.id}})">
         Guardar Cupon
       </button>
-      <p style="text-align:center;color:#cd1f3f">Qr unico y valido solo con esta promo</p>
+      <p style="text-align:center;color:#55348c">Qr unico y valido solo para este cupon</p>
     </div>
   </ion-content>
 </ion-modal-view>

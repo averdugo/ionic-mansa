@@ -2,6 +2,27 @@
 .bar-header{
   display: flex;
 }
+ #cupons p, #cupons span{
+  font-family: 'Cabin'!important;
+}
+#cupons h2, #cupons h1{
+  font-family: 'Cabin'!important;
+  text-transform: uppercase;
+}
+#cupons h1{
+  font-weight: bold;
+}
+.item-avatar{
+  padding-left: 0!important;
+  min-height: 0!important;
+}
+.item-avatar > img:first-child{
+  min-width: 70px!important;
+  min-height: 70px!important;
+}
+.container{
+  text-align: left;
+}
 </style>
 <ion-view id="cupons">
     <ion-nav-title>
@@ -9,31 +30,36 @@
     </ion-nav-title>
 
     <ion-content style="top:70px">
-      <div class="container"><h1>Manso Cupon</h1></div>
+      <div class="container"><h1>Cupones</h1></div>
+      <div style="margin-top: -14px;">
         <div class="list list-cupons" ng-repeat="cupon in cupons">
             <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
-                <img src="img/promo1.jpg">
+                <div class=" item-avatar">
+                  <img src="img/promo1.jpg">
+                </div>
+
+
                 <h2 class="desc">{{cupon.description}}</h2>
                 <p class="price">${{cupon.price}}</p>
                 <p class="naMe">{{cupon.store.name}}</p>
                 <span class="badge ">{{cupon.store.distance | number:0}} m</span>
             </a>
         </div>
-
+      </div>
      </ion-content>
      <ion-footer>
          <div class="tabs-striped tabs-color-balanced">
              <div class="tabs">
                  <a class="tab-item active" href="#">
-                     <img class="icon" src="../img/crear.png" alt="" style="    width: 32px;    height: 42px;    top: 5px;">
+                     <img class="icon i-cupon" src="../img/crear.png" alt="">
                          Promos
                  </a>
                  <a class="tab-item" href="#/app/stores">
-                     <i class="icon ion-flag"></i>
+                     <img class="icon i-cupon" src="../img/store.png" alt="" style="    width: 47%;margin-top: 0px!important;">
                          Locales
                  </a>
                  <a class="tab-item" href="#/app/mcupons">
-                     <i class="icon ion-ios-list"></i>
+                     <img class="icon i-cupon" src="../img/miscupones.png" alt="" style="width: 39%;margin-top: 0px!important;">
                          Cupones
                  </a>
                  <a class="tab-item" ng-click="search()">

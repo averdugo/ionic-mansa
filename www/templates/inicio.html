@@ -3,17 +3,17 @@
     display: none;
   }
   #inicio{
-    background-image: url(img/fondo1.jpg);
+    background-image: url(img/back-intro.jpg);
     background-size: cover;
   }
 </style>
 <ion-view id="inicio">
-  <ion-content>
+  <ion-content style="top: 48%;">
     <div align="center" class="animated zoomIn">
-      <img src="img/logo1.png" alt="" style="width:50%">
+
     </div>
 
-    <div class="list animated flipInY lista-fInit">
+    <div class="list animated flipInY lista-fInit" >
       <form ng-submit="doLogin2()">
           <label class="item item-input">
             <span class="input-label">Usuario</span>
@@ -28,7 +28,7 @@
           </label>
       </form>
       <label class="item">
-        <button class="button button-block button-positive" ng-click="fbLogin()">
+        <button class="button button-block button-positive" ng-click="fbLogin()" style="    background-color: #3d5a98;">
           Ingresa con Facebook
         </button>
     </label>

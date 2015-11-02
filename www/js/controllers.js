@@ -42,15 +42,26 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
   // Open the login modal
   $scope.login = function() {
+
     $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
+    $http({
+        method: 'POST',
+        data: $scope.loginData,
+        headers: {'Content-Type': 'application/json'},
+        url: Server+"user/login"
+    }).then(function successCallback(response) {
+        ownerData = JSON.stringify(response.data)
+        localStorage.setItem("owner", ownerData);
+        location.href="#/app/own";
+         $ionicLoading.hide();
+      }, function errorCallback(response) {
+        console.log(response)
+      });
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
@@ -73,7 +84,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
         localStorage.setItem("device_id", response.data.uuid);
         localStorage["user"] = JSON.stringify($scope.loginData);
         var storedUser = JSON.parse(localStorage["user"]);
-        location.href="#/app/playlists";
+        location.href="#/app/cupons";
          $ionicLoading.hide();
       }, function errorCallback(response) {
         console.log(response)

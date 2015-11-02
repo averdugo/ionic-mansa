@@ -1,22 +1,12 @@
 angular.module('starter')
 
   .controller('mCuponsController', function ($scope, $http, $ionicLoading, $ionicModal, CuponResource, $filter) {
-      $scope.string="";
 
-
+        $scope.string="";
 
         var cuponStorage= JSON.parse(localStorage["cupones"]);
-        var idArray = [];
-        $scope.string ="";
-        angular.forEach(cuponStorage, function(value,key){
-          idArray.push(value.cupon_id);
-        })
-
-        CuponResource.getCupon(idArray).then(function(data){
-            $scope.codigos=data.data;
-        });
-      
-
+        console.log(cuponStorage);
+        $scope.codigos=cuponStorage;
 
         $ionicModal.fromTemplateUrl('templates/qrG1.html', {
           scope: $scope

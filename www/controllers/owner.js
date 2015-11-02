@@ -1,20 +1,20 @@
 angular.module('starter')
- .controller('CuponCtrl', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner) {
+ .controller('OwnController', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner) {
 
    $ionicLoading.show({
       template: '<ion-spinner icon="ripple"></ion-spinner>'
    });
 
-    $ionicModal.fromTemplateUrl('templates/qrG.html', {
+    $ionicModal.fromTemplateUrl('templates/createCupon.html', {
       scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
     });
 
-    $scope.string ="";
-    var id= $stateParams.cuponId;
+    var own = JSON.parse(localStorage.getItem('owner'));
+    console.log(own);
 
-    $scope.qrG = function(id) {
+    $scope.qrG = function() {
         var device = localStorage["device_id"];
         var id= $stateParams.cuponId;
         var qrcode = JSON.stringify({c: id, d: device});
@@ -52,15 +52,6 @@ angular.module('starter')
 
 
 
-    $http({
-        method: 'GET',
-        url: Server+"cupon/"+id
-    }).then(function successCallback(data) {
-          $scope.cupon=data.data;
           $ionicLoading.hide();
-      }, function errorCallback(response) {
-          console.log(response)
-      });
-
-
+      
 });

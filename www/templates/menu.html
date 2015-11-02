@@ -15,19 +15,30 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-black">
-      <h1 class="title" style="width:100%">{{userName}}</h1>
+        <a class="item item-avatar" href="#"  style="    margin-top: -10px;min-height: 0px;">
+          <img src="img/init.jpg">
+      </a>
+      <h1  style="width:100%">{{userName}}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
         <ion-item menu-close href="#/app/cupons">
-          Cupones
+            <img class="menu-img" src="img/crear.png" alt="">
+              <p class="menu-p">Cupones</p>
+        </ion-item>
+        <ion-item menu-close href="#/app/stores">
+             <img class="menu-img" src="img/store.png" alt="">
+         <p class="menu-p"> Locales</p>
         </ion-item>
         <ion-item menu-close href="#/app/mcupons">
-          Mis Cupones
+            <img class="menu-img" src="img/miscupones.png" alt="" >
+          <p class="menu-p">Mis Cupones</p>
         </ion-item>
-        <ion-item menu-close ng-click="leerQr()">
+
+
+        <!--ion-item menu-close ng-click="leerQr()">
           Scan
-        </ion-item>
+      </ion-item-->
         <ion-item menu-close ng-click="login()">
           Ingreso
         </ion-item>

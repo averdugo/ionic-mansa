@@ -12,11 +12,11 @@
 #cupons h1{
   font-weight: bold;
 }
-.item-avatar{
+#cupons .item-avatar{
   padding-left: 0!important;
   min-height: 0!important;
 }
-.item-avatar > img:first-child{
+#cupons .item-avatar > img:first-child{
   min-width: 70px!important;
   min-height: 70px!important;
 }
@@ -26,10 +26,24 @@
 </style>
 <ion-view id="cupons">
     <ion-nav-title>
+<i class="icon ion-ios-search" style="font-size: 40px;margin-right: 20px;margin-left: 10px;" ng-click="search()"></i>
         <img src="img/logo.png" class="logo">
-    </ion-nav-title>
 
-    <ion-content style="top:70px">
+    </ion-nav-title>
+    <ion-slide-box auto-play="true"   style="margin-top:61px" >
+      <ion-slide>
+        <img src="img/banner_promo.png" alt="" class="responsive">
+
+        </button>
+      </ion-slide>
+      <ion-slide>
+        <img src="img/banner_promo.png" alt="" class="responsive">
+
+        </button>
+      </ion-slide>
+
+    </ion-slide-box>
+    <ion-content style="top:381px">
       <div class="container"><h1>Cupones</h1></div>
       <div style="margin-top: -14px;">
         <div class="list list-cupons" ng-repeat="cupon in cupons">
@@ -47,26 +61,5 @@
         </div>
       </div>
      </ion-content>
-     <ion-footer>
-         <div class="tabs-striped tabs-color-balanced">
-             <div class="tabs">
-                 <a class="tab-item active" href="#">
-                     <img class="icon i-cupon" src="../img/crear.png" alt="">
-                         Promos
-                 </a>
-                 <a class="tab-item" href="#/app/stores">
-                     <img class="icon i-cupon" src="../img/store.png" alt="" style="    width: 47%;margin-top: 0px!important;">
-                         Locales
-                 </a>
-                 <a class="tab-item" href="#/app/mcupons">
-                     <img class="icon i-cupon" src="../img/miscupones.png" alt="" style="width: 39%;margin-top: 0px!important;">
-                         Cupones
-                 </a>
-                 <a class="tab-item" ng-click="search()">
-                     <i class="icon ion-ios-search"></i>
-                         Search
-                 </a>
-             </div>
-         </div>
-     </ion-footer>
+
 </ion-view>

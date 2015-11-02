@@ -10,34 +10,17 @@
 
     <ion-content style="top:70px">
       <div class="container"><h1>Mis Cupones</h1></div>
+
         <div class="list list-cupons" ng-repeat="codigo in codigos">
             <a class="item item-thumbnail-left" ng-click="qrS({{codigo.id}})">
-                <img src="img/qr.jpg">
-                <h2 class="desc">{{codigo.description}}</h2>
-                <p class="price" style="color: #27da93;">${{codigo.price}}</p>
-                <p class="naMe" style="color: #27da93;">{{codigo.store.name}}</p>
+                <img src="img/qr.jpg"/>
+                <h2 class="desc" style="font-weight:bold">{{codigo.desc}}</h2>
+                <p class="price colorP" style="float:right">${{codigo.price}}</p>
+                <p class="naMe" style="color: #fff;">{{codigo.address}}</p>
 
             </a>
         </div>
 
      </ion-content>
-     <ion-footer>
-         <div class="tabs-striped tabs-color-balanced">
-             <div class="tabs">
-                 <a class="tab-item " href="#/app/cupons">
-                     <img class="icon" src="../img/crear.png" alt="" style="    width: 32px;    height: 42px;    top: 5px;">
-                         Promos
-                 </a>
-                 <a class="tab-item" href="#/app/stores">
-                     <i class="icon ion-flag"></i>
-                         Locales
-                 </a>
-                 <a class="tab-item active" href="#/app/mQr">
-                     <i class="icon ion-ios-list"></i>
-                         Cupones
-                 </a>
-                
-             </div>
-         </div>
-     </ion-footer>
+
 </ion-view>

@@ -19,9 +19,10 @@ label.item.item-input.item-select {
     margin: 30px auto;
 }
 .logo{
-    width: 70%;
-    margin-top: 10px;
+    width: 50%;
+    margin-top: 5px;
     max-width: 300px;
+        margin-left: 40px;
 }
 
 .bar .button.back-button{
@@ -31,12 +32,19 @@ label.item.item-input.item-select {
     background-image: url('../img/header.png')!important;
     height: 60px;
 }
+.has-header {
+    top: 61px;
+}
 .back-text span.default-title {
     display: none;
 }
 .bar .title {
     font-size:20px;
     top: 5px;
+    color: white;
+}
+.bar .button.button-icon {
+
     color: white;
 }
 .lista-inicio{
@@ -70,25 +78,50 @@ label.item.item-input.item-select {
 .bar{
     background-color: transparent;
 }
-.menu .bar-header{
-    background-image: url('../img/header.png')!important;
-    height: 60px;
-    background-size: cover;
+.menu-img{
+    width: 40px;
+    margin-left: 4px;
+    float: left;
+    margin-right: 20px;
 }
-.bar-header{
-    background-image: url('../img/background.png')!important;
+.menu-p{
+    margin-top: 12px;
+color: white!important;
+font-size: 22px!important;
+}
+.menu .bar-header{
+    background-color: rgb(21,21,21)!important;
     height: 61px;
 
 }
+.bar-header{
+    background-color: #312781!important;
+    height: 61px;
+    border-bottom: 1px solid #fff;
+}
+.modal{
+        background-color: rgb(21,21,21);
+}
+.input-label{
+    color: white;
+}
 .slider-pager {
-    bottom: 60px;
+    bottom: 15px;
 }
 .slider-pager .slider-pager-page{
     color: white;
 }
 .list{
     margin-top: 16px;
+    border-bottom: 1px solid #ddd;
 
+}
+.slider-slides{
+    height: 300px!important;
+}
+.colorP{
+        color: #e60e7b!important;
+        font-weight: bold;
 }
 .item, .item-complex .item-content{
     background-color: rgb(21,21,21);
@@ -131,7 +164,8 @@ label.item.item-input.item-select {
     padding: 5px 20px;
 }
 .tabs-striped .tabs{
-background-color: #55348c;
+
+background-color: rgb(21,21,21);
 }
 .tabs-striped .tabs i{
   color: #fff;

@@ -59,15 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
               }
           }
         })
-      .state('app.playlists', {
-          url: '/playlists',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/playlists.html',
 
-              }
-          }
-      })
       .state('app.cupons', {
           url: '/cupons',
           views: {
@@ -95,6 +87,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
               }
           }
       })
+      .state('app.own', {
+          url: '/own',
+          views: {
+              'menuContent': {
+                  templateUrl: 'templates/owner.html',
+                  controller: 'OwnController'
+              }
+          }
+      })
 
       .state('app.cupon', {
         url: '/cupon/:cuponId',
@@ -109,7 +110,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
 
   // if none of the above states are matched, use this as the fallback
   if (window.localStorage['user']&&window.localStorage['device_id']) {
-    $urlRouterProvider.otherwise('/app/playlists');
+    $urlRouterProvider.otherwise('/app/cupons');
 
   }else {
       $urlRouterProvider.otherwise('/app/inicio');

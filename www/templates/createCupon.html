@@ -8,10 +8,7 @@
   <ion-content>
     <form ng-submit="doCupon()">
       <div class="list">
-          <label class="item item-input">
-            <span class="input-label">Trago</span>
-            <input type="text" ng-model="cuponData.drink">
-          </label>
+
         <label class="item item-input">
           <span class="input-label">Descripcion</span>
           <input type="text" ng-model="cuponData.description">
@@ -24,10 +21,11 @@
           <span class="input-label">Stock</span>
           <input type="text" ng-model="cuponData.stock">
         </label>
-        <input type="hidden" ng-model="cuponData.store_id">
+
+
 
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-balanced" type="submit">Crear</button>
         </label>
       </div>
     </form>

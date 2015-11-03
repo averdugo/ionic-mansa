@@ -1,10 +1,15 @@
+<style>
+    .list{
+        border:none;
+    }
+</style>
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-black">
       <ion-nav-back-button class="button-clear">
         <i class="icon ion-ios-arrow-left"></i>
       </ion-nav-back-button>
-        
+
       <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -16,9 +21,9 @@
   <ion-side-menu side="left">
     <ion-header-bar class="bar-black">
         <a class="item item-avatar" href="#"  style="    margin-top: -10px;min-height: 0px;">
-          <img src="img/init.jpg">
+          <img src="http://graph.facebook.com/{{user.id}}/picture?width=270&height=270">
       </a>
-      <h1  style="width:100%">{{userName}}</h1>
+      <h1  style="width:100%;padding:0;font-size:16px">{{user.name}}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
@@ -34,11 +39,6 @@
             <img class="menu-img" src="img/miscupones.png" alt="" >
           <p class="menu-p">Mis Cupones</p>
         </ion-item>
-
-
-        <!--ion-item menu-close ng-click="leerQr()">
-          Scan
-      </ion-item-->
         <ion-item menu-close ng-click="login()">
             <img class="menu-img" src="img/ingreso.png" alt="" >
           <p class="menu-p"> Ingreso</p>

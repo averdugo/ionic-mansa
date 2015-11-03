@@ -11,7 +11,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
         if (window.localStorage['user']&&window.localStorage['device_id'])
         {
             var username = JSON.parse(localStorage["user"]);
-            $scope.userName=username.name;
+            $scope.user=username;
         }else
         {
         }
@@ -45,7 +45,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 ownerData = JSON.stringify(response.data)
                 localStorage.setItem("owner", ownerData);
                 location.href="#/app/own";
-                $ionicLoading.hide();
+                $scope.modal.hide();
             }, function errorCallback(response) {
                 console.log(response)
             });
@@ -86,9 +86,10 @@ angular.module('starter.controllers', ['ngOpenFB'])
                     if (response.status === 'connected')
                     {
                         ngFB.api({
-                            path: '/me',
+                            path: ' /v2.5/me',
                             params: {fields: 'id,name,email'}
                         }).then(function (user) {
+                            console.log(user);
                             $scope.user = user;
                             $http({
                                 method: 'PUT',
@@ -125,6 +126,10 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 location.href="#/app/mcupons"
                 $ionicLoading.hide();
             }
+        }
+
+        $scope.out=function(){
+            navigator.app.exitApp(); 
         }
 
     })

@@ -17,7 +17,7 @@ angular.module('starter')
     $scope.qrG = function(id) {
         var device = localStorage["device_id"];
         var id= $stateParams.cuponId;
-        var qrcode = JSON.stringify({c: id, d: device});
+        var qrcode = JSON.stringify({cupon_id: id, device_id: device});
         $scope.string =qrcode;
         $scope.modal.show();
     };

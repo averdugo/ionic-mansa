@@ -1,6 +1,6 @@
 angular.module('starter')
 
-  .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, $cordovaGeolocation) {
+  .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, $cordovaGeolocation) {
         $ionicLoading.show({
            template: '<ion-spinner icon="ripple"></ion-spinner>'
         });

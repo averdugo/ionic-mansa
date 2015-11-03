@@ -28,7 +28,6 @@ angular.module('starter')
 
 
     $scope.saveQr = function(a,b,c,d) {
-        console.log(a+" "+b+" "+c+" "+d);
         var uuid = localStorage["device_id"];
         var sCupon = {
           "uuid" : uuid,

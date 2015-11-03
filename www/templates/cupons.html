@@ -23,10 +23,17 @@
 .container{
   text-align: left;
 }
+.bar .button.back-button{
+    display: none;
+}
+.boton-search{
+    position: absolute;
+    font-size: 40px;margin-right: 20px;margin-left: 10px;
+}
 </style>
 <ion-view id="cupons">
     <ion-nav-title>
-<i class="icon ion-ios-search" style="font-size: 40px;margin-right: 20px;margin-left: 10px;" ng-click="search()"></i>
+        <i class="icon ion-ios-search boton-search" ng-click="search()"></i>
         <img src="img/logo.png" class="logo">
 
     </ion-nav-title>
@@ -43,7 +50,7 @@
       </ion-slide>
 
     </ion-slide-box>
-    <ion-content style="top:381px">
+    <ion-content style="top:281px">
       <div class="container"><h1>Cupones</h1></div>
       <div style="margin-top: -14px;">
         <div class="list list-cupons" ng-repeat="cupon in cupons">

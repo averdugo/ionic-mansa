@@ -19,10 +19,10 @@ label.item.item-input.item-select {
     margin: 30px auto;
 }
 .logo{
-    width: 50%;
-    margin-top: 5px;
+    width: 43%;
+    margin-top: 0px;
     max-width: 300px;
-        margin-left: 40px;
+    margin-left: 42%;
 }
 
 .bar .button.back-button{
@@ -95,7 +95,7 @@ font-size: 22px!important;
 
 }
 .bar-header{
-    background-color: #312781!important;
+    background: #312781!important;
     height: 61px;
     border-bottom: 1px solid #fff;
 }
@@ -117,7 +117,7 @@ font-size: 22px!important;
 
 }
 .slider-slides{
-    height: 300px!important;
+    height: 200px!important;
 }
 .colorP{
         color: #e60e7b!important;

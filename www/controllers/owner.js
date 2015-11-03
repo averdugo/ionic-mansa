@@ -12,46 +12,30 @@ angular.module('starter')
     });
 
     var own = JSON.parse(localStorage.getItem('owner'));
-    console.log(own);
+    $scope.owner = own;
+    console.log($scope.owner);
 
-    $scope.qrG = function() {
-        var device = localStorage["device_id"];
-        var id= $stateParams.cuponId;
-        var qrcode = JSON.stringify({c: id, d: device});
-        $scope.string =qrcode;
+    $scope.create = function() {
         $scope.modal.show();
     };
 
-    $scope.closeqrG = function() {
+    $scope.closeCuponM = function() {
         $scope.modal.hide();
     };
 
+    $scope.leerQr=function(){
+        $cordovaBarcodeScanner.scan().then(function(barcodeData){
+            console.log(barcodeData);
+        },function(error){
+            console.log(error);
+        });
+    }
 
-    $scope.saveQr = function(a,b,c,d) {
-        console.log(a+" "+b+" "+c+" "+d);
-        var uuid = localStorage["device_id"];
-        var sCupon = {
-          "uuid" : uuid,
-          "cupon_id" : a,
-          "desc" : b,
-          "price" : c,
-          "address" : d
-        }
-
-        var a = [];
-        if (localStorage.getItem('cupones')) {
-          alert("Cupon Guardado");
-          a = JSON.parse(localStorage.getItem('cupones'));
-        }
-
-        a.push(sCupon);
-        localStorage.setItem('cupones', JSON.stringify(a));
-
-        $scope.modal.hide();
-    };
-
+    $scope.doCupon=function(){
+        console.log();
+    }
 
 
           $ionicLoading.hide();
-      
+
 });

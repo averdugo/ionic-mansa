@@ -5,7 +5,6 @@ angular.module('starter')
         $scope.string="";
 
         var cuponStorage= JSON.parse(localStorage["cupones"]);
-        console.log(cuponStorage);
         $scope.codigos=cuponStorage;
 
         $ionicModal.fromTemplateUrl('templates/qrG1.html', {

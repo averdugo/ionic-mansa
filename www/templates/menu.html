@@ -4,7 +4,7 @@
       <ion-nav-back-button class="button-clear">
         <i class="icon ion-ios-arrow-left"></i>
       </ion-nav-back-button>
-
+        
       <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -30,7 +30,7 @@
              <img class="menu-img" src="img/store.png" alt="">
          <p class="menu-p"> Locales</p>
         </ion-item>
-        <ion-item menu-close href="#/app/mcupons">
+        <ion-item menu-close ng-click="MyCupon()">
             <img class="menu-img" src="img/miscupones.png" alt="" >
           <p class="menu-p">Mis Cupones</p>
         </ion-item>
@@ -40,7 +40,12 @@
           Scan
       </ion-item-->
         <ion-item menu-close ng-click="login()">
-          Ingreso
+            <img class="menu-img" src="img/ingreso.png" alt="" >
+          <p class="menu-p"> Ingreso</p>
+        </ion-item>
+        <ion-item menu-close ng-click="out()">
+          <img class="menu-img" src="img/exit1.png" alt="" >
+          <p class="menu-p"> Salida</p>
         </ion-item>
       </ion-list>
     </ion-content>

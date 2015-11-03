@@ -70,6 +70,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
           }
       })
       .state('app.mcupons', {
+          cache: false,
           url: '/mcupons',
           views: {
               'menuContent': {

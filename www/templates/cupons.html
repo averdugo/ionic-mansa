@@ -30,27 +30,38 @@
     position: absolute;
     font-size: 40px;margin-right: 20px;margin-left: 10px;
 }
+.btn-back2{
+    display: block;
+    position: absolute;
+    font-size: 30px;
+}
+.btn-back2sr{
+    display: none;
+}
 </style>
 <ion-view id="cupons">
     <ion-nav-title>
-        <i class="icon ion-ios-search boton-search" ng-click="search()"></i>
+        <i id="cuponBack" class="icon ion-chevron-left btn-back2 btn-back2sr" ng-click="reload()"></i>
+        <i id="cuponSearch" class="icon ion-ios-search boton-search" ng-click="search()"></i>
         <img src="img/logo.png" class="logo">
 
     </ion-nav-title>
-    <ion-slide-box auto-play="true"   style="margin-top:61px" >
-      <ion-slide>
-        <img src="img/banner_promo.png" alt="" class="responsive">
 
-        </button>
-      </ion-slide>
-      <ion-slide>
-        <img src="img/banner_promo.png" alt="" class="responsive">
+    <ion-content >
+        <ion-slide-box auto-play="true"   >
+          <ion-slide>
+            <img src="img/banner_promo.png" alt="" class="responsive">
 
-        </button>
-      </ion-slide>
+            </button>
+          </ion-slide>
+          <ion-slide>
+            <img src="img/banner_promo.png" alt="" class="responsive">
 
-    </ion-slide-box>
-    <ion-content style="top:281px">
+            </button>
+          </ion-slide>
+
+        </ion-slide-box>
+        <br>
       <div class="container"><h1>Cupones</h1></div>
       <div style="margin-top: -14px;">
         <div class="list list-cupons" ng-repeat="cupon in cupons">

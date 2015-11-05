@@ -13,6 +13,11 @@
   .input-label{
     color: white;
   }
+  .btnsearch{
+    background-color: transparent;
+    border: none;
+  }
+
 </style>
 <ion-modal-view>
   <ion-header-bar>
@@ -21,71 +26,54 @@
       <button class="button button-clear" ng-click="closeSearch()"><i class="icon ion-ios-close-empty" style="font-size:10px"></i></button>
     </div>
   </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doSearch()">
-      <div class="list list-inset list-search">
-        <label class="item item-input">
-          <input type="text" placeholder="Search" ng-model="searchData.q1">
-          <i class="icon ion-search placeholder-icon" style="    padding-right: 14px;"></i>
+    <ion-content>
+        <form ng-submit="doSearch()">
+            <div class="list list-inset list-search">
+                <label class="item item-input">
+                    <input type="text" placeholder="Buscar" ng-model="searchData.q1">
+                    <button class="button button-default btnsearch" type="submit"><i class="icon ion-search placeholder-icon"></i></button>
+                </label>
 
-        </label>
-
-
-          <div class="container" style="    margin-top: 30px;"><h1>Filtros</h1></div>
-          <label class="item item-input item-select">
-            <div class="input-label">
-              Trago
+                <div class="container" style="    margin-top: 30px;"><h1>Filtros</h1></div>
+                <div class="item range range-positive">
+                    <label style="margin-right: 20px;">Distancia </label><br>
+                    <i class="icon ion-minus"></i>
+                    <input type="range" name="volume" min="0" max="{{searchData.dist.max}}" value="{{searchData.dist.min}}" ng-model="searchData.dist.value">
+                    <i class="icon ion-plus"></i>
+                    {{searchData.dist.value}} km
+                  </div>
+                <label class="item item-input item-select">
+                    <div class="input-label">Comuna</div>
+                    <select ng-model="searchData.c">
+                        <option value="Santiago">Santiago</option>
+                        <option value="Las Condes">Las Condes</option>
+                        <option value="Providencia">Providencia</option>
+                        <option value="Nuñoa">Nuñoa</option>
+                        <option value="La Reina">La Reina</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">Precio</div>
+                    <select ng-model="searchData.p">
+                        <option value="0 - 4000">$ 0 - 4,000</option>
+                        <option value="4000 - 10000">$ 4,000 - 10,000</option>
+                        <option value="10000 - 20000">$ 10,000 - 20,000</option>
+                        <option value="20000 - +">$ 20,000 - mas</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">Local</div>
+                    <select ng-model="searchData.t">
+                        <option value="Bar">Bar</option>
+                        <option value="Pub">Pub</option>
+                        <option value="Disco">Disco</option>
+                        <option value="Restobar">Restobar</option>
+                        <option value="Botilleria">Botilleria</option>
+                        <option value="FonoCopete">FonoCopete</option>
+                        <option value="Comida">Comida</option>
+                    </select>
+                </label>
             </div>
-            <select ng-model="searchData.q">
-              <option value="Pisco">Pisco</option>
-              <option value="Ron">Ron</option>
-              <option value="Whisky">Whisky</option>
-              <option value="Tequila">Tequila</option>
-              <option value="Gin">Gin</option>
-              <option value="JaggerMeister">JaggerMeister</option>
-              <option value="Brandy">Brandy</option>
-            </select>
-          </label>
-          <label class="item item-input item-select">
-            <div class="input-label">
-              Comuna
-            </div>
-            <select ng-model="searchData.c">
-              <option value="Santiago">Santiago</option>
-              <option value="Las Condes">Las Condes</option>
-              <option value="Providencia">Providencia</option>
-              <option value="Nuñoa">Nuñoa</option>
-              <option value="La Reina">La Reina</option>
-            </select>
-          </label>
-          <label class="item item-input item-select">
-            <div class="input-label">
-              Precio
-            </div>
-            <select ng-model="searchData.p">
-              <option value="0 - 4000">$ 0 - 4,000</option>
-              <option value="4000 - 10000">$ 4,000 - 10,000</option>
-              <option value="10000 - 20000">$ 10,000 - 20,000</option>
-              <option value="20000 - +">$ 20,000 - mas</option>
-            </select>
-          </label>
-          <label class="item item-input item-select">
-            <div class="input-label">
-              Local
-            </div>
-            <select ng-model="searchData.t">
-              <option value="Bar">Bar</option>
-              <option value="Pub">Pub</option>
-              <option value="Disco">Disco</option>
-              <option value="Restobar">Restobar</option>
-              <option value="Botilleria">Botilleria</option>
-              <option value="FonoCopete">FonoCopete</option>
-              <option value="Comida">Comida</option>
-            </select>
-          </label>
-            <button class="button button-block button-balanced" type="submit">Buscar</button>
-
-      </div>
-    </form>
-  </ion-content>
+        </form>
+    </ion-content>
 </ion-modal-view>

@@ -27,6 +27,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+
       .state('app.inicio', {
           url: '/inicio',
           views: {
@@ -41,26 +42,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
           templateUrl: 'templates/menu.html',
           controller: 'AppCtrl'
       })
-
-      .state('app.search', {
-          url: '/search',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/search.html'
-              }
-          }
-      })
-
-      .state('app.browse', {
-          url: '/browse',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/browse.html'
-              }
-          }
-        })
-
       .state('app.cupons', {
+          cache: false,
           url: '/cupons',
           views: {
               'menuContent': {
@@ -80,6 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
           }
       })
       .state('app.stores', {
+          cache: false,
           url: '/stores',
           views: {
               'menuContent': {
@@ -104,6 +88,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
               'menuContent': {
                   templateUrl: 'templates/cupon.html',
                   controller: 'CuponCtrl'
+              }
+        }
+      })
+      .state('app.store', {
+        url: '/store/:storeId',
+        views: {
+              'menuContent': {
+                  templateUrl: 'templates/store.html',
+                  controller: 'StoreCtrl'
               }
         }
       });

@@ -9,14 +9,14 @@
 </style>
 <ion-view id="stores">
     <ion-nav-title>
-    
+
         <img src="img/logo.png" class="logo">
     </ion-nav-title>
 
     <ion-content style="top:70px">
         <div class="container"><h1 style="margin-bottom:0px">LOCALES</h1></div>
-        <div class="list list-cupons" ng-repeat="store in stores">
-            <a class="item item-thumbnail-left" href="#">
+        <div class="list list-cupons" ng-repeat="store in stores" style="    border-bottom: 1px solid #ddd">
+            <a class="item item-thumbnail-left" href="#/app/store/{{store.id}}">
                 <img src="img/boti.png">
                 <h2 class="desc colorP">{{store.name}}</h2>
                 <p class="" style="color:white">{{store.comuna}}</p>

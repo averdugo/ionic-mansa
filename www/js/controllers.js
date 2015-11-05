@@ -11,9 +11,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
         if (window.localStorage['user']&&window.localStorage['device_id'])
         {
             var username = JSON.parse(localStorage["user"]);
+            if (!username.id) {
+                username.foto="img/icon.png"
+            }else {
+                username.foto="http://graph.facebook.com/"+username.id+"/picture?width=270&height=270"
+            }
             $scope.user=username;
-        }else
-        {
+
         }
 
         $ionicModal.fromTemplateUrl('templates/login.html',
@@ -86,7 +90,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                     if (response.status === 'connected')
                     {
                         ngFB.api({
-                            path: ' /v2.5/me',
+                            path: '/me',
                             params: {fields: 'id,name,email'}
                         }).then(function (user) {
                             console.log(user);
@@ -104,7 +108,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
                             });
                         },
                         function (error) {
-                            alert('Facebook error: ' + error.error_description);
+                            console.log(error);
+                            $ionicLoading.hide();
                         });
                     } else {
                         alert('Facebook login failed');
@@ -129,7 +134,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
         }
 
         $scope.out=function(){
-            navigator.app.exitApp(); 
+            navigator.app.exitApp();
         }
 
     })

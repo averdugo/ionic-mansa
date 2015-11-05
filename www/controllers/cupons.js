@@ -1,67 +1,105 @@
 angular.module('starter')
 
-  .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, $cordovaGeolocation) {
+    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, $cordovaGeolocation,geoFactory) {
+
         $ionicLoading.show({
-           template: '<ion-spinner icon="ripple"></ion-spinner>'
+            template: '<ion-spinner icon="ripple"></ion-spinner>'
         });
+
         var posOptions = {timeout: 10000, enableHighAccuracy: true};
 
         $cordovaGeolocation
-             .getCurrentPosition(posOptions)
-             .then(function (position) {
-                   var lat  = position.coords.latitude
-                   var long = position.coords.longitude
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+                var lat  = position.coords.latitude
+                var long = position.coords.longitude
 
-                   $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
-                        $scope.cupons=data;
-                        $ionicLoading.hide();
-                   }).error(function (err) {
-                         $ionicLoading.show({
-                               template: 'No Se encuentra Geolocalizacion',
-                               duration: 3000
-                         });
-                   });
-
-
+                $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+                    $scope.cupons=data;
+                    $ionicLoading.hide();
+                }).error(function (err) {
+                    $ionicLoading.show({
+                        template: 'No Se encuentra Geolocalizacion',
+                        duration: 3000
+                    });
+                });
              }, function(err) {
            // error
        });
-       $ionicModal.fromTemplateUrl('templates/search1.html', {
-         scope: $scope
-       }).then(function(modal) {
-         $scope.modal = modal;
-       });
-       // Form data for the login modal
-       $scope.searchData = {};
 
-       $scope.search = function() {
-         $scope.modal.show();
-       };
-       $scope.closeSearch = function() {
-         $scope.modal.hide();
-       };
-       $scope.doSearch = function() {
-         $ionicLoading.show({
-            template: '<ion-spinner icon="ripple"></ion-spinner>'
-         });
+        $ionicModal.fromTemplateUrl('templates/search1.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
 
-         var q = $scope.searchData.q1
-         //var q = $scope.searchData.q1
-         var c = $scope.searchData.c
-         var p = $scope.searchData.p
-         var t = $scope.searchData.t
+        // Form data for the login modal
+        $scope.searchData = {};
 
-         $http.get(Server+"cupon?q="+q).success(function (data) {
-              $scope.cupons=data;
-              $ionicLoading.hide();
-         }).error(function (err) {
-               $ionicLoading.show({
-                     template: 'No Se encuentra Geolocalizacion',
-                     duration: 3000
-               });
-         });
+        $scope.search = function() {
+            $scope.searchData.dist= {
+                min:1,
+                max:10,
+                value:4
+            }
 
-         $scope.modal.hide();
+            $scope.modal.show();
+        };
+        $scope.reload = function() {
+            location.reload();
+        };
 
-       };
-  });
+        $scope.closeSearch = function() {
+            $scope.modal.hide();
+        };
+
+        $scope.doSearch = function() {
+            $ionicLoading.show({
+                template: '<ion-spinner icon="ripple"></ion-spinner>'
+            });
+
+            var geo = geoFactory.getGeo();
+            var q = $scope.searchData.q1
+            var c = $scope.searchData.c
+            var p = $scope.searchData.p
+            var t = $scope.searchData.t
+            var d = $scope.searchData.dist.value+"000"
+            var g = geo.lat+","+geo.long+","+d;
+            var searchParams="";
+
+            if (q) {
+                searchParams="q="+q;
+            }
+            if (c) {
+                searchParams.length==0 ? searchParams="" : searchParams=searchParams+"&";
+                searchParams=searchParams+"c="+c;
+            }
+            if (p) {
+                searchParams.length==0 ? searchParams="" : searchParams=searchParams+"&";
+                searchParams=searchParams+"p="+p;
+            }
+            if (t) {
+                searchParams.length==0 ? searchParams="" : searchParams=searchParams+"&";
+                searchParams=searchParams+"t="+t;
+            }
+
+            searchParams=searchParams+"&g="+g;
+            
+            $http.get(Server+"cupon?"+searchParams).success(function (data) {
+                document.getElementById('cuponSearch').className="btn-back2sr";
+                d=document.getElementById('cuponBack');
+                d.className=d.className.replace('btn-back2sr',"");
+                $scope.cupons=data;
+
+                $ionicLoading.hide();
+            }).error(function (err) {
+                $ionicLoading.show({
+                    template: 'No Se encuentra Geolocalizacion',
+                    duration: 3000
+                });
+            });
+
+            $scope.modal.hide();
+
+        };
+    });

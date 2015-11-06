@@ -12,7 +12,7 @@ angular.module('starter')
                    var lat  = position.coords.latitude
                    var long = position.coords.longitude
 
-                   $http.get(Server+"store?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+                   $http.get(Server+"store?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
                         $scope.stores=data;
                         $ionicLoading.hide();
                    }).error(function (err) {

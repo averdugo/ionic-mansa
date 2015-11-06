@@ -1,28 +1,57 @@
 <style>
-  h4{
-    text-align: center;
-  }
-  .col {
-      border-bottom: 1px solid #ddd;
-  }
-  h6 {
-      font-size: 15px;
-  }
-  .h-i{
-    font-size: 30px;
+ #cuponS p, #cuponS span{
+  font-family: 'Cabin'!important;
+}
+#cuponS h2, #cuponS h1{
+  font-family: 'Cabin'!important;
+  text-transform: uppercase;
+}
+#cuponS h1{
+  font-weight: bold;
+}
+#cuponS .item-avatar{
+  padding-left: 0!important;
+  min-height: 0!important;
+}
+#cuponS .item-avatar > img:first-child{
+  min-width: 70px!important;
+  min-height: 70px!important;
+}
 
-  }
-  .button-outline.button-outline{
-      border:none;
-  }
+.bar .button.back-button{
+    display: none;
+}
+.boton-search{
+    position: absolute;
+    font-size: 40px;margin-right: 20px;margin-left: 10px;
+}
+.btn-back2{
+    display: block;
+    position: absolute;
+    font-size: 30px;
+}
+
 </style>
-<ion-view view-title="">
+<ion-view view-title="" id="cuponS">
   <ion-nav-title>
+      <i id="cuponBack" class="icon ion-chevron-left btn-back2" ng-click="back()"></i>
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
-  <ion-content style="top:61px">
-    <h2>Cupones en Tienda ==</h2>
+  <ion-content style="top:66px">
+    <h2>Local {{cupon.store.name}}</h2>
+    <div style="margin-top: -14px;">
+      <div class="list list-cupons" ng-repeat="cupon in cupons">
+          <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
+              <div class=" item-avatar">
+                <img src="img/promo1.jpg">
+              </div>
+              <h2 class="desc">{{cupon.description}}</h2>
+              <p class="price">${{cupon.price}}</p>
+              <p class="naMe"></p>
 
+          </a>
+      </div>
+    </div>
   </ion-content>
-  
+
 </ion-view>

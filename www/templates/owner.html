@@ -29,11 +29,15 @@ border-bottom: 1px solid #ddd;
     </div>
     <div id="homeOwn">
         <h1>Cupones Activos</h1>
-        <div class="list" ng-repeat="cupon in cupons">
-            <a class="item item-avatar" href="#">
-              <img src="venkman.jpg">
-              <h2>{{cupon.description}}</h2>
-              <p>{{cupon.price}}</p>
+        <div class="list list-cupons" ng-repeat="cupon in cupons">
+            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
+                <div class=" item-avatar">
+                  <img src="img/promo1.jpg">
+                </div>
+                <h2 class="desc">{{cupon.description}}</h2>
+                <p class="price">${{cupon.price}}</p>
+                <p class="naMe">{{cupon.store.name}}</p>
+                <span class="badge ">{{cupon.store.distance | number:0}} m</span>
             </a>
         </div>
     </div>

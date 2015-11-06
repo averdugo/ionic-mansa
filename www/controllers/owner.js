@@ -18,6 +18,7 @@ angular.module('starter')
 
         $http.get(Server+"cupon?s="+store_id).success(function (data) {
             console.log(data);
+            $scope.cupons=data;
             $ionicLoading.hide();
         }).error(function (err) {
             console.log(err);

@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('OwnController', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner) {
+    .controller('OwnController', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner,CameraFactory) {
 
         $ionicLoading.show({
             template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -52,6 +52,15 @@ angular.module('starter')
         }
 
         $scope.cuponData = {};
+
+        $scope.getPhoto = function() {
+            Camera.getPicture().then(function(imageURI) {
+                console.log(imageURI);
+            }, function(err) {
+                console.err(err);
+            });
+        };
+
         $scope.doCupon=function(){
             $scope.cuponData.store_id =store_id;
 

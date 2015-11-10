@@ -1,7 +1,5 @@
 <style>
-.bar-header{
-  display: flex;
-}
+
  #cupons p, #cupons span{
   font-family: 'Cabin'!important;
 }
@@ -33,29 +31,36 @@
 .btn-back2{
     display: block;
     position: absolute;
-    font-size: 30px;
+    font-size: 30px!important;
+    color: white!important;
+    right: 0;
+    top: 3px;
 }
 .btn-back2sr{
     display: none;
 }
 </style>
 <ion-view id="cupons">
+
     <ion-nav-title>
-        <i id="cuponBack" class="icon ion-chevron-left btn-back2 btn-back2sr" ng-click="reload()"></i>
-        <i id="cuponSearch" class="icon ion-ios-search boton-search" ng-click="search()"></i>
+
         <img src="img/logo.png" class="logo">
-
     </ion-nav-title>
-
+    <ion-nav-buttons side="right">
+      <button id="cuponSearch" class="button button-icon button-clear ion-search" ng-click="search()">
+      </button>
+      <button id="cuponBack" class="button button-icon button-clear ion-loop btn-back2 btn-back2sr" ng-click="reload()">
+      </button>
+    </ion-nav-buttons>
     <ion-content >
         <ion-slide-box auto-play="true"   >
           <ion-slide>
-            <img src="img/banner_promo.png" alt="" class="responsive">
+            <img src="img/banner_promo1.png" alt="" class="responsive">
 
             </button>
           </ion-slide>
           <ion-slide>
-            <img src="img/banner_promo.png" alt="" class="responsive">
+            <img src="img/banner_promo2.png" alt="" class="responsive">
 
             </button>
           </ion-slide>

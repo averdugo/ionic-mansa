@@ -39,7 +39,7 @@ angular.module('starter')
 
         var a = [];
         if (localStorage.getItem('cupones')) {
-          alert("Cupon Guardado");
+          alert("Cupón Guardado en Mis Cupones: Muestra este cupón en el local establecido y disfruta de esta Mansa Promo");
           a = JSON.parse(localStorage.getItem('cupones'));
         }
 
@@ -49,17 +49,30 @@ angular.module('starter')
         $scope.modal.hide();
     };
 
-
+    $scope.getChecks = function(id){
+        $http({
+            method: 'GET',
+            url: Server+"redemption/"+id
+        }).then(function successCallback(data) {
+            console.log(data);
+        }, function errorCallback(response) {
+            console.log(response)
+         });
+    }
 
     $http({
         method: 'GET',
         url: Server+"cupon/"+id
     }).then(function successCallback(data) {
-          $scope.cupon=data.data;
-          $ionicLoading.hide();
-      }, function errorCallback(response) {
-          console.log(response)
-      });
+        $scope.cupon=data.data;
+        getChecks($scope.cupon.id);
+    }, function errorCallback(response) {
+        $ionicLoading.show({
+            template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
+            duration: 3000
+        });
+        console.log(response)
+     });
 
 
 });

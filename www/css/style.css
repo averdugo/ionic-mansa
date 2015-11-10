@@ -5,6 +5,9 @@ body{
 input{
   color: white!important;
 }
+.bar .title.title-left{
+    text-align: center;
+}
 .list-search{
   background-color: transparent;
 }
@@ -19,10 +22,10 @@ label.item.item-input.item-select {
     margin: 30px auto;
 }
 .logo{
-    width: 43%;
+    width: 100%;
     margin-top: 0px;
-    max-width: 300px;
-    margin-left: 42%;
+    max-width: 250px;
+
 }
 
 .bar .button.back-button{
@@ -39,9 +42,11 @@ label.item.item-input.item-select {
     display: none;
 }
 .bar .title {
-    font-size:20px;
-    top: 5px;
+    font-size: 20px;
+    padding-top: 2%;
     color: white;
+    height: 61px;
+
 }
 .bar .button.button-icon {
 

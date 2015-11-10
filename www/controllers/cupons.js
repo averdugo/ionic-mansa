@@ -14,18 +14,23 @@ angular.module('starter')
                 var lat  = position.coords.latitude
                 var long = position.coords.longitude
 
-                $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+                $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
                     $scope.cupons=data;
                     $ionicLoading.hide();
                 }).error(function (err) {
+
                     $ionicLoading.show({
                         template: 'No Se encuentra Geolocalizacion',
                         duration: 3000
                     });
                 });
              }, function(err) {
-           // error
-       });
+                 $ionicLoading.show({
+                     template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
+                     duration: 3000
+                 });
+                 console.log(err.message)
+             });
 
         $ionicModal.fromTemplateUrl('templates/search1.html', {
             scope: $scope
@@ -84,19 +89,25 @@ angular.module('starter')
             }
 
             searchParams=searchParams+"&g="+g;
-            
+
             $http.get(Server+"cupon?"+searchParams).success(function (data) {
                 document.getElementById('cuponSearch').className="btn-back2sr";
                 d=document.getElementById('cuponBack');
                 d.className=d.className.replace('btn-back2sr',"");
+                if (data===[]) {
+                    $ionicLoading.show({
+                        template: 'No Se encuentra cupon',
+                        duration: 3000
+                    });
+                }
                 $scope.cupons=data;
-
                 $ionicLoading.hide();
             }).error(function (err) {
-                $ionicLoading.show({
-                    template: 'No Se encuentra Geolocalizacion',
-                    duration: 3000
-                });
+                    console.log(err);
+                    $ionicLoading.show({
+                        template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
+                        duration: 3000
+                    });
             });
 
             $scope.modal.hide();

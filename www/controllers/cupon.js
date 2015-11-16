@@ -65,7 +65,7 @@ angular.module('starter')
         url: Server+"cupon/"+id
     }).then(function successCallback(data) {
         $scope.cupon=data.data;
-        getChecks($scope.cupon.id);
+        //getChecks($scope.cupon.id);
     }, function errorCallback(response) {
         $ionicLoading.show({
             template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',

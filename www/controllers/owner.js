@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('OwnController', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner,CameraFactory) {
+    .controller('OwnController', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner,Camera) {
 
         $ionicLoading.show({
             template: '<ion-spinner icon="ripple"></ion-spinner>'

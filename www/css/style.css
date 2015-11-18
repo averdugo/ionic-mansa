@@ -1,6 +1,7 @@
 /* Empty. Add your own CSS if you like */
 body{
     background-image: url(../img/background.png);
+    font-family: 'Cabin'!important;
 }
 input{
   color: white!important;
@@ -18,6 +19,12 @@ input{
     background-color: rgb(21,21,21);
   color: white;
 }
+.cuponesFooter{
+    position: absolute;
+bottom: 10px;
+width: 100%;
+text-align: center;
+}
 label.item.item-input.item-select {
     margin: 30px auto;
 }
@@ -30,6 +37,7 @@ label.item.item-input.item-select {
 
 .bar .button.back-button{
     margin-top: 3px;
+    display: none;
 }
 .bar.bar-dark{
     background-image: url('../img/header.png')!important;
@@ -52,6 +60,9 @@ label.item.item-input.item-select {
 
     color: white;
 }
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]{
+    font-size:18px;
+}
 .lista-inicio{
     height: 100%;
     background-image: url(../img/perfiles.png);
@@ -69,12 +80,17 @@ label.item.item-input.item-select {
 .lista-inicio i{
     color: #259c85;
 }
+.colorP{
+        color: #ee4931!important;
+}
 .list-cupons .item, .list-cupons h2{
     background-color: transparent;
     color: white;
+    padding-top: 10px;
 }
 .pane, .view{
     background-color: #333;
+
 }
 .menu{
     background-color: rgb(21,21,21);
@@ -122,12 +138,9 @@ label.item.item-input.item-select {
 
 }
 .slider-slides{
-    height: 200px!important;
+    height: 40vh!important;
 }
-.colorP{
-        color: #e60e7b!important;
-        font-weight: bold;
-}
+
 .item, .item-complex .item-content{
     background-color: rgb(21,21,21);
     color: white;
@@ -184,22 +197,34 @@ margin-top: -2px!important;
     right: 0;
     top: 60px;
 }
-#cupons p.naMe{
-  position: absolute;
-  bottom: 17px;
-      color: #e60e7b;
+ p.naMe{
+    color: white;
+    text-transform: uppercase;
+    width: 70%;
+  white-space: pre-line;
 }
-#cupons h2.desc{
-  width: 70%;
-white-space: pre-line;
+ h2.desc{
+    color:#ee4931;
+    font-weight: bolder;
+    text-transform: uppercase;
+    width: 70%;
+    white-space: pre-line;
 }
-#cupons p.price{
-  font-weight: 900;
-  top: 16px;
-font-size: 16px;
-position: absolute;
-right: 8px;
-    color: #e60e7b;
+ p.price{
+    position: absolute;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #9e1981;
+    top: 15px;
+    color: white;
+    padding: 25px 0px 16px 0;
+    text-align: center;
+    font-size: 16px;
+}
 }
 #cupons .list{
   margin: 0;
@@ -207,7 +232,7 @@ right: 8px;
     border-style: none none solid none;
 }
 #cupons .item-thumbnail-left{
-  padding-top: 16px;
+  padding-top: 10px;
 }
 h1 {
   display: inline-block;

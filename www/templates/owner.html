@@ -1,6 +1,32 @@
 <style>
-.col {
-border-bottom: 1px solid #ddd;
+.col_2 {
+border-bottom: 1px solid #ee4931;
+}
+.numO{
+    font-size: 40px;
+}
+.cupons p, #cupons span{
+ font-family: 'Cabin'!important;
+}
+.cupons h2, #cupons h1{
+ font-family: 'Cabin'!important;
+ text-transform: uppercase;
+}
+.cupons h1{
+ font-weight: bold;
+ color:#ee4931
+}
+.cupons .item-avatar{
+ padding-left: 0!important;
+ min-height: 0!important;
+}
+.cupons .item-avatar > img:first-child{
+ min-width: 70px!important;
+ min-height: 70px!important;
+}
+.canje{
+    font-size: 18px!important;
+    color:white!important;
 }
 </style>
 <ion-view view-title="">
@@ -8,10 +34,11 @@ border-bottom: 1px solid #ddd;
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
   <ion-content style="top:61px">
-    <img src="img/boti.png" alt="" style="width: 100%;height: 100px;">
+    <img src="img/own.png" alt="" style="width: 100%;">
     <div class="row">
-      <div class="col" align="center">
-		<h1>{{owner.stores[0].name}}</h1>
+      <div class="col col_2" align="center">
+        <h4 class="colorP" style="margin:0">TIENDA</h4>
+		<h1 style="margin:0 0 5px;text-transform:uppercase">{{owner.stores[0].name}}</h1>
         <p style="color:white">{{owner.stores[0].address}}</p>
         <h4><strong class="colorP">{{cupon.price}}</strong></h4>
       </div>
@@ -19,33 +46,34 @@ border-bottom: 1px solid #ddd;
 
     <div class="row">
       <div class="col" align="center">
-        <h4><strong class="colorP">26</strong></h4>
-        <h6 class="mb">canjeados</h6>
+        <h4><strong class="colorP numO">26</strong></h4>
+        <h6 class="mb" style="font-size:20px">Canjeados</h6>
       </div>
       <div class="col" align="center">
-        <h4><strong class="colorP">2</strong></h4>
-        <h6 class="mb">Activos</h6>
+        <h4><strong class="colorP numO">{{cupons.length}}</strong></h4>
+        <h6 class="mb" style="font-size:20px">Activos</h6>
       </div>
     </div>
-    <div id="homeOwn">
-        <h1>Cupones Activos</h1>
+    <div id="homeOwn" class="cupons" >
+
         <div class="list list-cupons" ng-repeat="cupon in cupons">
-            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
+            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}" style="padding-top:20px">
                 <div class=" item-avatar">
                   <img src="img/promo1.jpg">
                 </div>
                 <h2 class="desc">{{cupon.description}}</h2>
+                <p class="canje">5 <small>Canjeados</small></p>
                 <p class="price">${{cupon.price}}</p>
-                <p class="naMe">{{cupon.store.name}}</p>
-                <span class="badge ">{{cupon.store.distance | number:0}} m</span>
+
+
             </a>
         </div>
     </div>
-    <div id="logsOwn" style="display:none">
+    <div id="logsOwn" class="ng-hide">
         <h1>Registro de Actividades</h1>
         <div class="list" ng-repeat="log in logs">
             <a class="item item-avatar" href="#">
-              <img src="venkman.jpg">
+              <img src="">
               <h2>{{log.description}}</h2>
               <p>{{log.price}}</p>
             </a>
@@ -57,7 +85,7 @@ border-bottom: 1px solid #ddd;
   <ion-footer>
       <div class="tabs-striped tabs-color-balanced">
           <div class="tabs">
-              <a class="tab-item">
+              <a class="tab-item" ng-click="ownerH()">
                 <i class="icon ion-home" ></i>
                 Inicio
               </a>
@@ -69,9 +97,9 @@ border-bottom: 1px solid #ddd;
                 <i class="icon ion-plus"></i>
                 Crear
               </a>
-              <a class="tab-item" ng-click="logs()">
+              <a class="tab-item" href="#/app/info">
                 <i class="icon ion-clipboard"></i>
-                Logs
+                Info
               </a>
           </div>
       </div>

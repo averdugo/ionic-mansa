@@ -1,8 +1,13 @@
+<style>
+    .input-label{
+        font-size: 20px
+    }
+</style>
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Crear Cupon</h1>
+    <h1 class="title colorP" style="font-weight:bolder;font-size:18px">CREAR CUPON</h1>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeCuponM()">Close</button>
+      <button class="button button-clear" ng-click="closeCuponM()"><i class="ion-close"></i></button>
     </div>
   </ion-header-bar>
   <ion-content>
@@ -10,27 +15,28 @@
       <div class="list">
 
         <label class="item item-input">
-          <span class="input-label">Descripcion</span>
+          <span class="input-label colorP">Descripcion</span>
           <input type="text" ng-model="cuponData.description">
         </label>
         <label class="item item-input">
-          <span class="input-label">Precio</span>
+          <span class="input-label colorP">Precio</span>
           <input type="text" ng-model="cuponData.price">
         </label>
         <label class="item item-input">
-          <span class="input-label">Stock</span>
+          <span class="input-label colorP">Stock</span>
           <input type="text" ng-model="cuponData.stock">
         </label>
 
+            <div class="button-bar" style="margin-top:30vh">
+                <button class="button button-balanced" type="submit">Crear</button>
+                <button type="button" class="button button-assertive" name="button" ng-click="getPhoto()">Tomar Foto</button>
+            </div>
 
 
-        <label class="item">
-          <button class="button button-block button-balanced" type="submit">Crear</button>
+
         </label>
       </div>
     </form>
-    <div >
-        <button type="button" name="button" ng-click="getPhoto()">Tomar Foto</button>
-    </div>
+
   </ion-content>
 </ion-modal-view>

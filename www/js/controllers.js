@@ -20,6 +20,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
         }
 
+
         $ionicModal.fromTemplateUrl('templates/login.html',
         {
             scope: $scope
@@ -33,7 +34,12 @@ angular.module('starter.controllers', ['ngOpenFB'])
         };
 
         $scope.loginData = {};
+        if (window.localStorage['owner'])
+        {
+            var owner = JSON.parse(localStorage["owner"]);
+            $scope.loginData={email:owner.email};
 
+        }
         $scope.login = function() {
             $scope.modal.show();
         };
@@ -66,10 +72,14 @@ angular.module('starter.controllers', ['ngOpenFB'])
                     alert("Esta aplicacion es para mayores de 18 años")
                     return false;
                 };
+            var data = {'email':$scope.loginData.email}
 
+            data=JSON.stringify(data)
             $http({
                 method: 'PUT',
-                url: Server+"device/"
+                url: Server+"device/",
+                headers: {'Content-Type': 'application/json'},
+                data: data,
             }).then(function successCallback(response) {
                 localStorage.setItem("device_id", response.data.uuid);
                 localStorage["user"] = JSON.stringify($scope.loginData);

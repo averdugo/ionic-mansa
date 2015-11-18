@@ -1,0 +1,67 @@
+<style>
+    .info span{
+        font-size: 16px;
+    }
+</style>
+<ion-view view-title="">
+  <ion-nav-title>
+      <img src="img/logo.png" class="logo">
+    </ion-nav-title>
+  <ion-content style="top:61px">
+    <img src="img/own.png" alt="" style="width: 100%;">
+    <div class="row">
+      <div class="col col_2" align="center">
+        <h4 class="colorP" style="margin:0">TIENDA</h4>
+		<h1 style="margin:0 0 5px;text-transform:uppercase">{{owner.stores[0].name}}</h1>
+      </div>
+    </div>
+    <div class="list list-inset info" style="margin-bottom:60px;margin-top:0px">
+
+        <div class="item">
+          Contacto : <span>{{owner.fname}}</span>
+        </div>
+        <div class="item">
+          Email : <span>{{owner.email}}</span>
+        </div>
+        <div class="item">
+          Telefono : <span>{{owner.phone}}</span>
+        </div>
+        <div class="item">
+          Tipo : <span>{{owner.stores[0].storetype.label}}</span>
+        </div>
+        <div class="item">
+          Direccion : <span>{{owner.stores[0].address}}</span>
+        </div>
+        <div class="item">
+          Comuna : <span>{{owner.stores[0].comuna}}</span>
+        </div>
+        <div class="item">
+          Region : <span>{{owner.stores[0].region}}</span>
+        </div>
+
+    </div>
+
+  </ion-content>
+  <ion-footer>
+      <div class="tabs-striped tabs-color-balanced">
+          <div class="tabs">
+              <a class="tab-item" href="#/app/own">
+                <i class="icon ion-home" ></i>
+                Inicio
+              </a>
+              <a class="tab-item" ng-click="leerQr()">
+                <i class="icon ion-android-wifi"></i>
+                Scan
+              </a>
+              <a class="tab-item" ng-click="create()">
+                <i class="icon ion-plus"></i>
+                Crear
+              </a>
+              <a class="tab-item" >
+                <i class="icon ion-clipboard"></i>
+                Info
+              </a>
+          </div>
+      </div>
+  </ion-footer>
+</ion-view>

@@ -9,6 +9,7 @@
 }
 #cupons h1{
   font-weight: bold;
+  color:#ee4931
 }
 #cupons .item-avatar{
   padding-left: 0!important;
@@ -19,7 +20,7 @@
   min-height: 70px!important;
 }
 .container{
-  text-align: left;
+  text-align: center;
 }
 .bar .button.back-button{
     display: none;
@@ -53,14 +54,15 @@
       </button>
     </ion-nav-buttons>
     <ion-content >
+        <ion-refresher pulling-text="Refrescar..."  on-refresh="doRefresh()"></ion-refresher>
         <ion-slide-box auto-play="true"   >
           <ion-slide>
-            <img src="img/banner_promo1.png" alt="" class="responsive">
+            <img src="img/slides/banner3.png" alt="" class="responsive">
 
             </button>
           </ion-slide>
           <ion-slide>
-            <img src="img/banner_promo2.png" alt="" class="responsive">
+            <img src="img/slides/banner4.png" alt="" class="responsive">
 
             </button>
           </ion-slide>
@@ -78,11 +80,14 @@
 
                 <h2 class="desc">{{cupon.description}}</h2>
                 <p class="price">${{cupon.price}}</p>
-                <p class="naMe">{{cupon.store.name}}</p>
-                <span class="badge ">{{cupon.store.distance | number:0}} m</span>
+                <p class="naMe">{{cupon.store.address}}</p>
+
             </a>
         </div>
       </div>
      </ion-content>
+     <ion-footer class="cuponesFooter">
+         <img src="img/scrolld.png" alt="">
+     </ion-footer>
 
 </ion-view>

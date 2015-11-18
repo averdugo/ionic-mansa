@@ -14,10 +14,9 @@ angular.module('starter')
         var own = JSON.parse(localStorage.getItem('owner'));
         $scope.owner = own;
         var store_id = own.stores[0].id;
-        console.log($scope.owner);
+        //console.log($scope.owner);
 
         $http.get(Server+"cupon?s="+store_id).success(function (data) {
-            console.log(data);
             $scope.cupons=data;
             $ionicLoading.hide();
         }).error(function (err) {
@@ -76,6 +75,4 @@ angular.module('starter')
                 console.log(response)
             });
         }
-          $ionicLoading.hide();
-
 });

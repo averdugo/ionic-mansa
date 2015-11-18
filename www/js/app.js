@@ -5,7 +5,7 @@ const Server="http://skizzordz.exis.cl:8000/";
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires',[]
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB','ja.qr'])
+angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','ngCordova', 'ngOpenFB','ja.qr'])
 
     .run(function($ionicPlatform, ngFB) {
       ngFB.init({appId: '869739519812527'});
@@ -23,7 +23,13 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
         }
       });
     })
-
+    .config(function(uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            //    key: 'your api key',
+            v: '3.20', //defaults to latest 3.X anyhow
+            libraries: 'weather,geometry,visualization'
+        });
+    })
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -78,6 +84,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ngOpenFB
               'menuContent': {
                   templateUrl: 'templates/owner.html',
                   controller: 'OwnController'
+              }
+          }
+      })
+      .state('app.info', {
+          url: '/info',
+          views: {
+              'menuContent': {
+                  templateUrl: 'templates/info.html',
+                  controller: 'OwnInfoController'
               }
           }
       })

@@ -1,5 +1,5 @@
 angular.module('starter')
- .controller('CuponCtrl', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner) {
+ .controller('CuponCtrl', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
 
    $ionicLoading.show({
       template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -13,6 +13,8 @@ angular.module('starter')
 
     $scope.string ="";
     var id= $stateParams.cuponId;
+
+
 
     $scope.qrG = function(id) {
         var device = localStorage["device_id"];
@@ -65,7 +67,10 @@ angular.module('starter')
         url: Server+"cupon/"+id
     }).then(function successCallback(data) {
         $scope.cupon=data.data;
+        $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 18 };
+        $scope.coords={center:{latitude:$scope.cupon.store.coordinates.lat,longitude:$scope.cupon.store.coordinates.lon}};
         //getChecks($scope.cupon.id);
+        $ionicLoading.hide();
     }, function errorCallback(response) {
         $ionicLoading.show({
             template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',

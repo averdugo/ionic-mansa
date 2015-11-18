@@ -2,10 +2,7 @@
 .bar-header{
   display: flex;
 }
-.container{
-  text-align: left;
-      font-weight: bold;
-}
+
 </style>
 <ion-view id="stores">
     <ion-nav-title>
@@ -14,17 +11,19 @@
     </ion-nav-title>
 
     <ion-content style="top:70px">
-        <div class="container"><h1 style="margin-bottom:0px">LOCALES</h1></div>
+        <div class="container"><h1 style="margin-bottom:0px;color:#ee4931">LOCALES</h1></div>
         <div class="list list-cupons" ng-repeat="store in stores" style="    border-bottom: 1px solid #ddd">
             <a class="item item-thumbnail-left" href="#/app/store/{{store.id}}">
                 <img src="img/icon.png">
                 <h2 class="desc colorP">{{store.name}}</h2>
-                <p class="" style="color:white">{{store.comuna}}</p>
+
                 <p class="naMe"style="color:white">{{store.address}}</p>
-                <span class="badge "style="color:white;right: 10px;">{{store.distance | number:0}} m</span>
+                <p class="price" >{{store.distance | number:0 | limitTo : 3 : 0}} km</p>
             </a>
         </div>
 
      </ion-content>
-
+     <ion-footer class="cuponesFooter">
+         <img src="img/scrolld.png" alt="">
+     </ion-footer>
 </ion-view>

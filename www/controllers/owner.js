@@ -38,10 +38,23 @@ angular.module('starter')
 
         $scope.leerQr=function(){
             $cordovaBarcodeScanner.scan().then(function(barcodeData){
-                console.log(barcodeData);
+                
+                if (typeof barcodeData == 'undefined' || typeof barcodeData.text == 'undefined')
+                {
+                    // Agregar error sobre falta de QR o algo....
+                    return;
+                }
+                
+                var parts = barcodeData.text.split(',');
+                var cupon_id = parts[0],
+                    device_id = parts[1];
+                
                 $http({
                     method: 'PUT',
-                    data: barcodeData,
+                    data: JSON.stringify({
+                        c: cupon_id,
+                        d: device_id
+                    }),
                     headers: {'Content-Type': 'application/json'},
                     url: Server+"redemption/"
                 }).then(function successCallback(response) {

@@ -18,7 +18,11 @@
     {
       "locator": "https://github.com/apache/cordova-plugin-whitelist.git",
       "id": "cordova-plugin-whitelist"
-    }
+    },
+    "cordova-plugin-camera",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-inappbrowser",
+    "phonegap-plugin-barcodescanner"
   ],
   "cordovaPlatforms": [
     {

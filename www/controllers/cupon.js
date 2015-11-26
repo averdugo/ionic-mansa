@@ -16,7 +16,7 @@ angular.module('starter')
 
 
 
-    $scope.qrG = function(id) {
+    $scope.qrG = function() {
         var device = localStorage["device_id"];
         var id= $stateParams.cuponId;
         var qrcode = JSON.stringify({cupon_id: id, device_id: device});
@@ -67,7 +67,7 @@ angular.module('starter')
         url: Server+"cupon/"+id
     }).then(function successCallback(data) {
         $scope.cupon=data.data;
-        $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 18 };
+        $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 16 };
         $scope.coords={center:{latitude:$scope.cupon.store.coordinates.lat,longitude:$scope.cupon.store.coordinates.lon}};
         //getChecks($scope.cupon.id);
         $ionicLoading.hide();

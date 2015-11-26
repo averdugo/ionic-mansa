@@ -43,6 +43,7 @@ angular.module('starter')
                     alert("Cupon valido");
                     $scope.modal.hide();
                 }, function errorCallback(response) {
+                    alert("Cupon no valido");
                     console.log(response)
                 });
             },function(error){

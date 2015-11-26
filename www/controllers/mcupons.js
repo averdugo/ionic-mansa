@@ -21,7 +21,7 @@ angular.module('starter')
 
         $scope.qrS = function(id) {
             var device= localStorage["device_id"];
-            var single_object = id+","+device;
+            var single_object = id +","+device;
             $scope.string = single_object;
             $scope.modal.show();
         };

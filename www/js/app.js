@@ -5,7 +5,7 @@ const Server="http://skizzordz.exis.cl:8000/";
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires',[]
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','ngCordova', 'ngOpenFB','ja.qr'])
+angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','ngCordova', 'ngOpenFB','ja.qr', 'ionic.rating'])
 
     .run(function($ionicPlatform, ngFB) {
       ngFB.init({appId: '869739519812527'});

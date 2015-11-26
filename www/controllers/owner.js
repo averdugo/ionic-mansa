@@ -51,7 +51,7 @@ angular.module('starter')
         }
 
         $scope.cuponData = {};
-        
+
         $scope.getPhoto = function() {
             Camera.
                 getPicture({
@@ -66,12 +66,13 @@ angular.module('starter')
                         url:        Server + 'image/',
                         data:       imageURI
                     })
-                    .then(function(data) {
-                        console.log(data);
+                    .then(function(img) {
+                        console.log(img);
+                        $scope.cuponData.image_id=img.id;
                     })
                 });
         };
-        
+
         $scope.doCupon=function(){
             $scope.cuponData.store_id =store_id;
 

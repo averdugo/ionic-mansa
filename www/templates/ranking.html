@@ -1,0 +1,47 @@
+<style>
+.container h1{
+  font-weight: bold;
+  color:#ee4931
+}
+#rating i{
+    font-size: 50px;
+    color: yellow;
+    margin-right: 10px;
+}
+#rating li{
+    display: inline-block;
+
+}
+#rating ul{
+    text-align: center;
+
+}
+</style>
+<ion-modal-view>
+  <ion-header-bar style="border:none">
+    <h1 class="title"><img src="img/logo.png" class="logo"></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()"><i class="ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+      <br>
+      <div class="container">
+          <h2>CALIFICA</h2>
+          <h1>TU EXPERIENCIA</h1>
+          <div id="rating">
+                <rating ng-model="rate" max="max"></rating>
+                
+          </div>
+
+      </div>
+    <form ng-submit="doRate()">
+      <div class="list">
+                  <input id="ratingHidden" type="hidden" ng-model="rating.value">
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit">ENVIAR</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

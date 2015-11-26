@@ -2,9 +2,11 @@
  #cuponS p, #cuponS span{
   font-family: 'Cabin'!important;
 }
-#cuponS h2, #cuponS h1{
-  font-family: 'Cabin'!important;
+ .h1ss{
+  font-family: 'Bowlby One SC'!important;
   text-transform: uppercase;
+  font-size: 20px;
+  text-align:center;
 }
 #cuponS h1{
   font-weight: bold;
@@ -38,7 +40,7 @@
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
   <ion-content style="top:66px">
-    <h2>Local {{cupon.store.name}}</h2>
+    <h2 class="h1ss colorP">Local {{cupons[0].store.name}}</h2>
     <div style="margin-top: -14px;">
       <div class="list list-cupons" ng-repeat="cupon in cupons">
           <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
@@ -47,7 +49,7 @@
               </div>
               <h2 class="desc">{{cupon.description}}</h2>
               <p class="price">${{cupon.price}}</p>
-              <p class="naMe"></p>
+              <p class="naMe">{{cupon.store.address}}</p>
 
           </a>
       </div>

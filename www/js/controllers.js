@@ -103,13 +103,16 @@ angular.module('starter.controllers', ['ngOpenFB'])
                             path: '/me',
                             params: {fields: 'id,name,email'}
                         }).then(function (user) {
-                            console.log(user);
                             $scope.user = user;
+                            data =  {'email':user.email}
                             $http({
                                 method: 'PUT',
-                                url: Server+"device/"
-                            }).then(function successCallback(response) {
-                                localStorage.setItem("device_id", response.data.uuid);
+                                url: Server+"device/",
+                                headers: {'Content-Type': 'application/json'},
+                                data: data,
+                            }).then(function successCallback(data) {
+                                console.log(data);
+                                localStorage.setItem("device_id", data.data.device_id);
                                 localStorage["user"] = JSON.stringify( $scope.user );
                                 location.href="#/app/cupons";
                                 $ionicLoading.hide();

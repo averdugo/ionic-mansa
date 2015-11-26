@@ -12,7 +12,6 @@ angular.module('starter')
             url: Server+"cupon?s="+id
         }).then(function successCallback(data) {
             $scope.cupons=data.data;
-            console.log($scope.cupons)
             $ionicLoading.hide();
         }, function errorCallback(response) {
             console.log(response)

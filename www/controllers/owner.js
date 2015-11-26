@@ -51,21 +51,33 @@ angular.module('starter')
         }
 
         $scope.cuponData = {};
-
+        
         $scope.getPhoto = function() {
-            Camera.getPicture().then(function(imageURI) {
-                console.log(imageURI);
-            }, function(err) {
-                console.err(err);
-            });
+            Camera.
+                getPicture({
+                    destinationType: 0 // Camera.DestinationType.DATA_URL
+                })
+                .then(function(imageURI) {
+                    $http({
+                        method:     'PUT',
+                        headers:    {
+                            'X-Content-Transfer-Encoding': 'base64'
+                        },
+                        url:        Server + 'image/',
+                        data:       imageURI
+                    })
+                    .then(function(data) {
+                        console.log(data);
+                    })
+                });
         };
-
+        
         $scope.doCupon=function(){
             $scope.cuponData.store_id =store_id;
 
             $http({
                 method: 'PUT',
-                data:     $scope.cuponData,
+                data:    $scope.cuponData,
                 headers: {'Content-Type': 'application/json'},
                 url: Server+"cupon/"
             }).then(function successCallback(data) {

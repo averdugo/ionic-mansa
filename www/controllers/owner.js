@@ -22,6 +22,11 @@ angular.module('starter')
         }).error(function (err) {
             console.log(err);
         });
+        $http.get(Server+"store/"+store_id).success(function (data) {
+            $scope.canjeados = data.cupons.redeemed;
+        }).error(function (err) {
+            console.log(err);
+        });
 
         $scope.create = function() {
             $scope.modal.show();

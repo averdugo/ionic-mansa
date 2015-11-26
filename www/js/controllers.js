@@ -29,6 +29,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
             $scope.modal = modal;
         });
 
+        
+
         $scope.closeLogin = function() {
             $scope.modal.hide();
         };

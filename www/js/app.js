@@ -115,7 +115,6 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
               }
         }
       });
-      
     // alternatively, register the interceptor via an anonymous factory
     $httpProvider.interceptors.push(function($q) {
       return {
@@ -127,7 +126,6 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
         }
       };
     });
-  
   var deviceReady = function() {
     if (window.localStorage.user && window.localStorage.device_id) {
       $urlRouterProvider.otherwise('/app/cupons');
@@ -135,7 +133,6 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
       $urlRouterProvider.otherwise('/app/inicio');
     }
   };
-  
   if (cordova.platformId=='browser') {
     deviceReady();
   }
@@ -143,5 +140,4 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
     document.addEventListener('deviceready', deviceReady, false);
   }
   // if none of the above states are matched, use this as the fallback
-  
 });

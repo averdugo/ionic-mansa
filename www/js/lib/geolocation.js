@@ -73,8 +73,26 @@ Geolocation = {
 			);
 		};
 		
+		if (cordova.platformId=='browser')
+		{
+			located.resolve({
+				coords: {
+					accuracy: 49,
+					altitude: null,
+					altitudeAccuracy: null,
+					heading: null,
+					latitude: -33.427782,
+					longitude: -70.6192058,
+					speed: null
+				},
+				timestamp: new Date().getTime()
+			});
+		}
+		else
+		{
+			_getGeo();	
+		}
 		
-		_getGeo();
 		return located.promise();
 	}
 };

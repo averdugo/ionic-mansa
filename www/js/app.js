@@ -31,7 +31,7 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
         });
     })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
 
       .state('app.inicio', {
@@ -115,14 +115,33 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
               }
         }
       });
-
-
-  // if none of the above states are matched, use this as the fallback
-  if (window.localStorage['user']&&window.localStorage['device_id']) {
-    $urlRouterProvider.otherwise('/app/cupons');
-
-  }else {
+      
+    // alternatively, register the interceptor via an anonymous factory
+    $httpProvider.interceptors.push(function($q) {
+      return {
+       request: function(config) {
+           if (localStorage.device_id) {
+               config.headers['X-DEVICE-ID'] = localStorage.device_id;
+           }
+           return config;
+        }
+      };
+    });
+  
+  var deviceReady = function() {
+    if (window.localStorage.user && window.localStorage.device_id) {
+      $urlRouterProvider.otherwise('/app/cupons');
+    }else {
       $urlRouterProvider.otherwise('/app/inicio');
+    }
+  };
+  
+  if (cordova.platformId=='browser') {
+    deviceReady();
   }
-
+  else {
+    document.addEventListener('deviceready', deviceReady, false);
+  }
+  // if none of the above states are matched, use this as the fallback
+  
 });

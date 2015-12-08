@@ -38,8 +38,16 @@
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
   <ion-content id ="cupon" style="top:61px">
-    <button class="button" ng-click="shareAnywhere()">Share anywhere</button>
+
     <img src="img/promo1.jpg" alt="" style="width: 100%;    height: 200px;">
+    <!--Social-->
+    <p>COMPARTIR</p>
+    <div class="button-bar" style="margin-top: -10px;">
+        <button class="button  ion-social-facebook button-positive" ng-click="shareF()" style="font-size: 40px;"></button>
+        <button class="button  ion-social-whatsapp button-balanced" ng-click="shareW()" style="font-size: 40px;"></button>
+        <button class="button  ion-social-twitter button-calm" ng-click="shareT()" style="font-size: 40px;"></button>
+    </div>
+
     <div class="row">
       <div class="col" align="center">
         <h2>{{cupon.description}}</h2>
@@ -71,7 +79,7 @@
     <div class="row">
       <div class="col" align="center" style="margin-bottom:40px">
         <h4 class=""><strong class="colorP"><i class="icon ion-map"></i></strong>  {{cupon.store.address}}, {{cupon.store.comuna}}, {{cupon.store.region}}</h4>
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="false">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="false" data-tap-disabled="true">
             <ui-gmap-marker idKey='0' coords='coords.center' draggable="false"></ui-gmap-marker>
         </ui-gmap-google-map>
       </div>

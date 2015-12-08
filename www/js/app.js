@@ -133,7 +133,10 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
       $urlRouterProvider.otherwise('/app/inicio');
     }
   };
-  if (cordova.platformId=='browser') {
+
+
+  if (typeof cordova == 'undefined' || cordova.platformId=='browser') {
+
     deviceReady();
   }
   else {

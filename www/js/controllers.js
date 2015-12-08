@@ -90,6 +90,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 $ionicLoading.hide();
             }, function errorCallback(response) {
                 console.log(response)
+                $ionicLoading.hide();
             });
         };
 
@@ -120,6 +121,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                                 $ionicLoading.hide();
                             }, function errorCallback(response) {
                                 console.log(response)
+                                $ionicLoading.hide();
                             });
                         },
                         function (error) {
@@ -128,6 +130,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                         });
                     } else {
                         alert('Facebook login failed');
+                        $ionicLoading.hide();
                     }
                 });
         };

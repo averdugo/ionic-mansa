@@ -14,10 +14,10 @@ angular.module('starter')
     $scope.string ="";
     var id= $stateParams.cuponId;
 
-    $scope.shareAnywhere = function() {
+    $scope.shareF = function() {
 
         $cordovaSocialSharing
-            .share('message', 'subject', 'img/promo1.jpg', "http://blog.nraboy.com") // Share via native share sheet
+            .shareViaFacebookWithPasteMessageHint('Tested', null, "http://www.fizerkhan.com/blog/posts/Social-Sharing-in-Ionic-application.html") // Share via native share sheet
             .then(function(result) {
                 alert('success');
                 console.log(result);
@@ -25,8 +25,31 @@ angular.module('starter')
                 console.log(err);
             });
 
-       
+
     }
+    $scope.shareW= function(){
+        $cordovaSocialSharing
+            .shareViaWhatsApp('Tested', 'http://yamaki.com.co/kla-promo/img/PROMO-KLA-FEB2013-01_r3_c2.jpg' , "http://www.fizerkhan.com/blog/posts/Social-Sharing-in-Ionic-application.html") // Share via native share sheet
+            .then(function(result) {
+                alert('success');
+                console.log(result);
+            }, function(err) {
+                console.log(err);
+            });
+    }
+
+    $scope.shareT= function(){
+        $cordovaSocialSharing
+            .shareViaTwitter('Tested', 'http://yamaki.com.co/kla-promo/img/PROMO-KLA-FEB2013-01_r3_c2.jpg' , "http://www.fizerkhan.com/blog/posts/Social-Sharing-in-Ionic-application.html") // Share via native share sheet
+            .then(function(result) {
+                alert('success');
+                console.log(result);
+            }, function(err) {
+                console.log(err);
+            });
+    }
+
+
 
     $scope.qrG = function() {
         var device = localStorage["device_id"];

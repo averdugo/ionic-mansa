@@ -21,11 +21,13 @@ angular.module('starter')
             $ionicLoading.hide();
         }).error(function (err) {
             console.log(err);
+            $ionicLoading.hide();
         });
         $http.get(Server+"store/"+store_id).success(function (data) {
             $scope.canjeados = data.cupons.redeemed;
         }).error(function (err) {
             console.log(err);
+            $ionicLoading.hide();
         });
 
         $scope.create = function() {
@@ -72,6 +74,7 @@ angular.module('starter')
                 });
             },function(error){
                 console.log(error);
+                $ionicLoading.hide();
             });
         }
 
@@ -111,6 +114,7 @@ angular.module('starter')
                 $scope.modal.hide();
             }, function errorCallback(response) {
                 console.log(response)
+                $scope.modal.hide();
             });
         }
 });

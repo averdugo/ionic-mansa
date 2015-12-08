@@ -179,6 +179,35 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
     width: 100%;
 
 }
+.loading-container .loading{
+    padding: 0;
+    background: none;
+}
+.alertL{
+    background-image: url('../img/background.png');
+    background-size: contain;
+    width: 100%;
+    min-width: 320px;
+    border-radius: 5px;
+    min-height: 220px;
+    -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+}
+.alertL h1{
+    margin: 30px 0 20px;
+    color: #ff01ce!important;
+    font-size: 44px;
+    font-weight: bolder;
+}
+.alertL p{
+    font-size: 20px;
+    line-height: 30px;
+    padding: 0 15px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
 .lista-fInit{
     margin-top: 13%;
 }

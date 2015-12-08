@@ -32,16 +32,22 @@ angular.module('starter')
                     headers: {'Content-Type': 'application/json'},
                     url: Server+"redemption/"
                 }).then(function successCallback(response) {
-                    alert("Cupon valido");
+                    $ionicLoading.show({
+                        template: '<div class="alertL"><h1>GENIAL</h1><p>CUPON VALIDO</p></div>',
+                        duration: 6000
+                    });
                     $scope.modal.hide();
                 }, function errorCallback(response) {
-                    console.log(response)
+                    $ionicLoading.show({
+                        template: '<div class="alertL"><h1>¡UPS!</h1><p>CUPON NO VALIDO</p></div>',
+                        duration: 6000
+                    });
                 });
             },function(error){
                 console.log(error);
             });
         }
-        
+
         $scope.cuponData = {};
 
         $scope.getPhoto = function() {

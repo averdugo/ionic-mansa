@@ -29,7 +29,10 @@ angular.module('starter')
             }).then(function successCallback(data) {
                 console.log(data);
                 if (data.data.length >= 1) {
-                    alert('cupon canjeado');
+                    $ionicLoading.show({
+                        template: '<div class="alertL"><h1>GENIAL!</h1><p>CUPON CANJEADO</p></div>',
+                        duration: 6000
+                    });
                     var cuponStorage= JSON.parse(localStorage["cupones"]);
                     for (var i = 0; i < cuponStorage.length; i++) {
                         if (cuponStorage[i].cupon_id == id) {
@@ -42,7 +45,10 @@ angular.module('starter')
                     $scope.ranking();
                 }
             }, function errorCallback(response) {
-                alert("Cupon no valido");
+                $ionicLoading.show({
+                    template: '<div class="alertL"><h1>¡UPS!</h1><p>CUPON NO VALIDO</p></div>',
+                    duration: 6000
+                });
                 console.log(response)
             });
 

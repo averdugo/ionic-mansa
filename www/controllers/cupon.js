@@ -15,7 +15,17 @@ angular.module('starter')
     var id= $stateParams.cuponId;
 
     $scope.shareAnywhere = function() {
-       $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "http://blog.nraboy.com");
+
+        $cordovaSocialSharing
+            .share('message', 'subject', 'img/promo1.jpg', "http://blog.nraboy.com") // Share via native share sheet
+            .then(function(result) {
+                alert('success');
+                console.log(result);
+            }, function(err) {
+                console.log(err);
+            });
+
+       
     }
 
     $scope.qrG = function() {

@@ -43,7 +43,11 @@ angular.module('starter')
 
         var a = [];
         if (localStorage.getItem('cupones')) {
-          alert("Cupón Guardado en Mis Cupones: Muestra este cupón en el local establecido y disfruta de esta Mansa Promo");
+          $ionicLoading.show({
+              template: '<div class="alertL"><h1>Cupón Guardado</h1><p>Muestra este cupón en el local establecido y disfruta de esta Mansa Promo</p></div>'
+
+          });
+
           a = JSON.parse(localStorage.getItem('cupones'));
         }
 
@@ -75,8 +79,8 @@ angular.module('starter')
         $ionicLoading.hide();
     }, function errorCallback(response) {
         $ionicLoading.show({
-            template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
-            duration: 3000
+            template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
+            duration: 6000
         });
         console.log(response)
      });

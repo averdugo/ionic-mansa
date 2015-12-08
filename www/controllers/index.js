@@ -11,10 +11,10 @@ angular.module('starter')
                          console.log(cupons)
                          $ionicLoading.hide();
                    }).error(function (err) {
-                         $ionicLoading.show({
-                               template: 'No Se encuentra Geolocalizacion',
-                               duration: 3000
-                         });
+                       $ionicLoading.show({
+                           template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY GPS</p></div>',
+                           duration: 6000
+                       });
                    });
 
 

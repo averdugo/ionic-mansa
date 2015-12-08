@@ -18,18 +18,17 @@ angular.module('starter')
                     $scope.cupons=data;
                     $ionicLoading.hide();
                 }).error(function (err) {
-
                     $ionicLoading.show({
-                        template: 'No Se encuentra Geolocalizacion',
-                        duration: 3000
+                        template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY GPS</p></div>',
+                        duration: 6000
                     });
+
                 });
              }, function(err) {
-                 $ionicLoading.show({
-                     template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
-                     duration: 3000
-                 });
-                 console.log(err.message)
+                $ionicLoading.show({
+                    template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
+                    duration: 6000
+                });
              });
 
         $ionicModal.fromTemplateUrl('templates/search1.html', {
@@ -68,7 +67,7 @@ angular.module('starter')
             if ($scope.searchData.q2 != undefined) {
                 var q = $scope.searchData.q2+" "+$scope.searchData.q1;
             }else{
-                q = $scope.searchData.q1    
+                q = $scope.searchData.q1
             }
             var c = $scope.searchData.c
             var p = $scope.searchData.p
@@ -101,18 +100,20 @@ angular.module('starter')
                 d.className=d.className.replace('btn-back2sr',"");
                 if (data===[]) {
                     $ionicLoading.show({
-                        template: 'No Se encuentra cupon',
-                        duration: 3000
+                        template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY CUPONES</p></div>',
+                        duration: 6000
                     });
+
                 }
                 $scope.cupons=data;
                 $ionicLoading.hide();
             }).error(function (err) {
                     console.log(err);
                     $ionicLoading.show({
-                        template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
-                        duration: 3000
+                        template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
+                        duration: 6000
                     });
+
             });
 
             $scope.modal.hide();

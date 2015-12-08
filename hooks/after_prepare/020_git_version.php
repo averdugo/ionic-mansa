@@ -9,6 +9,12 @@ foreach(explode(',', $_SERVER['CORDOVA_PLATFORMS']) as $platform)
 	case 'android':
 		$file = "platforms/android/res/xml/config.xml";
 		break;
+	case 'browser':
+		$file = "platforms/browser/config.xml";
+		break;
+	default:
+		$file = "platforms/{$platform}/config.xml";
+		break;
 	}
 	
 	$xml = simplexml_load_file($file);

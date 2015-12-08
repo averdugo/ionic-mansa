@@ -22,7 +22,8 @@
     "cordova-plugin-camera",
     "cordova-plugin-geolocation",
     "cordova-plugin-inappbrowser",
-    "phonegap-plugin-barcodescanner"
+    "phonegap-plugin-barcodescanner",
+    "cordova-plugin-x-socialsharing"
   ],
   "cordovaPlatforms": [
     {

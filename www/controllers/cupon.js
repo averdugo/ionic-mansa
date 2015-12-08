@@ -1,5 +1,5 @@
 angular.module('starter')
- .controller('CuponCtrl', function($scope, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
+ .controller('CuponCtrl', function($scope, $cordovaSocialSharing, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
 
    $ionicLoading.show({
       template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -14,7 +14,9 @@ angular.module('starter')
     $scope.string ="";
     var id= $stateParams.cuponId;
 
-
+    $scope.shareAnywhere = function() {
+       $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "http://blog.nraboy.com");
+    }
 
     $scope.qrG = function() {
         var device = localStorage["device_id"];

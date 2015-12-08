@@ -29,7 +29,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
             $scope.modal = modal;
         });
 
-        
+
 
         $scope.closeLogin = function() {
             $scope.modal.hide();
@@ -82,8 +82,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 url: Server+"device/",
                 headers: {'Content-Type': 'application/json'},
                 data: data,
-            }).then(function successCallback(response) {
-                localStorage.setItem("device_id", response.data.uuid);
+            }).then(function successCallback(data) {
+                localStorage.setItem("device_id", data.data.device_id);
                 localStorage["user"] = JSON.stringify($scope.loginData);
                 var storedUser = JSON.parse(localStorage["user"]);
                 location.href="#/app/cupons";

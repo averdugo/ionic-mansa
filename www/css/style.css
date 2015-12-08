@@ -9,6 +9,14 @@ input{
 .bar .title.title-left{
     text-align: center;
 }
+.bar-header{
+    display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;;
+}
 .list-search{
   background-color: transparent;
 }
@@ -169,7 +177,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 .responsive{
     width: 100%;
-    
+
 }
 .lista-fInit{
     margin-top: 13%;

@@ -1,4 +1,12 @@
 <style>
+.bar-header{
+    display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;;
+}
   h4{
     text-align: center;
   }
@@ -30,6 +38,7 @@
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
   <ion-content id ="cupon" style="top:61px">
+    <button class="button" ng-click="shareAnywhere()">Share anywhere</button>
     <img src="img/promo1.jpg" alt="" style="width: 100%;    height: 200px;">
     <div class="row">
       <div class="col" align="center">

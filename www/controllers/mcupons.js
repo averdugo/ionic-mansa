@@ -22,10 +22,32 @@ angular.module('starter')
         });
 
         function qrRedem(id){
-            //alert("ss");
             var device= localStorage["device_id"];
-            var single_object = id +","+device;
-            console.log(single_object);
+            $http({
+                method: 'GET',
+                url: Server+"redemption/?cupon_id="+id+"&device_id="+device
+            }).then(function successCallback(data) {
+                console.log(data);
+                if (data.data.length >= 1) {
+                    alert('cupon canjeado');
+                    var cuponStorage= JSON.parse(localStorage["cupones"]);
+                    for (var i = 0; i < cuponStorage.length; i++) {
+                        if (cuponStorage[i].cupon_id == id) {
+                            cuponStorage[i].is_redeemed = true;
+                            break;
+                        }
+                    }
+                    localStorage.cupones = JSON.stringify(cuponStorage);
+                    $scope.closeqrG();
+                    $scope.ranking();
+                }
+            }, function errorCallback(response) {
+                alert("Cupon no valido");
+                console.log(response)
+            });
+
+
+
 
         }
 
@@ -34,7 +56,7 @@ angular.module('starter')
             var single_object = id +","+device;
             $scope.string = single_object;
             $scope.modal.show();
-            promise = $interval(function(){ qrRedem(id); }, 5000);
+            promise = $interval(function(){ qrRedem(id); }, 4000);
         };
 
         $scope.closeqrG = function() {

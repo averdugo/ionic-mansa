@@ -65,7 +65,11 @@ angular.module('starter')
             });
 
             var geo = geoFactory.getGeo();
-            var q = $scope.searchData.q1
+            if ($scope.searchData.q2 != undefined) {
+                var q = $scope.searchData.q2+" "+$scope.searchData.q1;
+            }else{
+                q = $scope.searchData.q1    
+            }
             var c = $scope.searchData.c
             var p = $scope.searchData.p
             var t = $scope.searchData.t

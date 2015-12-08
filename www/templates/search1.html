@@ -28,7 +28,7 @@
             <div class="list list-inset list-search">
                 <label class="item item-input">
                     <input type="text" placeholder="Buscar" ng-model="searchData.q1">
-                    <button class="button button-default btnsearch" type="submit"><i class="icon ion-search placeholder-icon"></i></button>
+                    
                 </label>
 
                 <div class="container " style="    margin-top: 30px;"><h1 class="colorP">FILTROS</h1></div>
@@ -39,6 +39,19 @@
                     <i class="icon ion-plus"></i>
                     {{searchData.dist.value}} km
                   </div>
+                  <label class="item item-input item-select">
+                    <div class="input-label">Trago</div>
+                    <select ng-model="searchData.q2">
+                        <option value="Vodka">Vodka</option>
+                        <option value="Pisco">Pisco</option>
+                        <option value="Ron">Ron</option>
+                        <option value="Whisky">Whisky</option>
+                        <option value="Tequila">Tequila</option>
+                        <option value="Martini">Martini</option>
+                        <option value="Vinos">Vinos</option>
+                        <option value="Espumantes">Espumantes</option>
+                    </select>
+                </label>
                 <label class="item item-input item-select">
                     <div class="input-label">Comuna</div>
                     <select ng-model="searchData.c">
@@ -70,6 +83,7 @@
                         <option value="Comida">Comida</option>
                     </select>
                 </label>
+                <button class="button button-balanced button-block btnsearch" type="submit" style="color:#222;font-size: 28px;">BUSCAR</button>
             </div>
         </form>
     </ion-content>

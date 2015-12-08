@@ -1,6 +1,6 @@
 angular.module('starter')
 
-    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, $cordovaGeolocation,geoFactory) {
+    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, geoFactory) {
 
         $ionicLoading.show({
             template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -8,11 +8,21 @@ angular.module('starter')
 
         var posOptions = {timeout: 10000, enableHighAccuracy: true};
 
-        $cordovaGeolocation
-            .getCurrentPosition(posOptions)
-            .then(function (position) {
-                var lat  = position.coords.latitude
-                var long = position.coords.longitude
+        Geolocation
+             .getCurrentPosition(posOptions)
+             .then(function (position) {
+                   var lat  = position.coords.latitude;
+                   var long = position.coords.longitude;
+                   
+                   $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+                        $scope.cupons=data;
+                        $ionicLoading.hide();
+                   }).error(function (err) {
+                         $ionicLoading.show({
+                               template: 'No Se encuentra Geolocalizacion',
+                               duration: 3000
+                         });
+                   });
 
                 $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
                     $scope.cupons=data;
@@ -29,7 +39,7 @@ angular.module('starter')
                      template: 'Lo sentimos, No fue posible conectarse. Verifica tu conexión a internet y vuelve a intentarlo',
                      duration: 3000
                  });
-                 console.log(err.message)
+                 console.log(err.message);
              });
 
         $ionicModal.fromTemplateUrl('templates/search1.html', {

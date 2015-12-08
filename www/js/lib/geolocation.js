@@ -13,11 +13,13 @@ Geolocation = {
 			// -Phillip Whelan
 			if (typeof cordova.plugins == 'undefined')
 			{
+				console.log('cordova plugins not loaded...');
 				setTimeout(_getGeo, 1000);
 				return;
 			}
 			if (typeof cordova.plugins.diagnostic == 'undefined')
 			{
+				console.log('cordova diagnostic plugin not loaded...');
 				setTimeout(_getGeo, 1000);
 				return;
 			}
@@ -73,7 +75,7 @@ Geolocation = {
 			);
 		};
 		
-		if (cordova.platformId=='browser')
+		if (typeof cordova == 'undefined' || cordova.platformId=='browser')
 		{
 			located.resolve({
 				coords: {

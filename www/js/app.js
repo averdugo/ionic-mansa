@@ -136,7 +136,7 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
     }
   };
   
-  if (cordova.platformId=='browser') {
+  if (typeof cordova == 'undefined' || cordova.platformId=='browser') {
     deviceReady();
   }
   else {

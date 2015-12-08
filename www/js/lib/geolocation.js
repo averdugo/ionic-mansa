@@ -9,9 +9,17 @@ Geolocation = {
 		{
 			var getGeoInterval = null;
 			
+			// This is a hideous hack to work around load ordering...
+			// -Phillip Whelan
+			if (typeof cordova.plugins == 'undefined')
+			{
+				setTimeout(_getGeo, 1000);
+				return;
+			}
 			if (typeof cordova.plugins.diagnostic == 'undefined')
 			{
 				setTimeout(_getGeo, 1000);
+				return;
 			}
 			
 			cordova.plugins.diagnostic.isGpsLocationEnabled(

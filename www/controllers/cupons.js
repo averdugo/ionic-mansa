@@ -14,7 +14,7 @@ angular.module('starter')
                    var lat  = position.coords.latitude;
                    var long = position.coords.longitude;
                    
-                   $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+                   $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
                         $scope.cupons=data;
                         $ionicLoading.hide();
                    }).error(function (err) {
@@ -24,7 +24,7 @@ angular.module('starter')
                          });
                    });
 
-                $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+                $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
                     $scope.cupons=data;
                     $ionicLoading.hide();
                 }).error(function (err) {
@@ -75,15 +75,21 @@ angular.module('starter')
             });
 
             var geo = geoFactory.getGeo();
-            if ($scope.searchData.q2 != undefined) {
-                var q = $scope.searchData.q2+" "+$scope.searchData.q1;
-            }else{
-                q = $scope.searchData.q1
+            
+            var termsin = [
+              $scope.searchData.q2,
+              $scope.searchData.q1
+            ];
+            var terms = [];
+            
+            for (var i = 0; i < termsin.length; i++) {
+                if (termsin[i]) terms.push(termsin[i]);
             }
-            var c = $scope.searchData.c
-            var p = $scope.searchData.p
-            var t = $scope.searchData.t
-            var d = $scope.searchData.dist.value+"000"
+            var q = terms.join(' ');
+            var c = $scope.searchData.c;
+            var p = $scope.searchData.p;
+            var t = $scope.searchData.t;
+            var d = $scope.searchData.dist.value+"000";
             var g = geo.lat+","+geo.long+","+d;
             var searchParams="";
 
@@ -91,21 +97,21 @@ angular.module('starter')
                 searchParams="q="+q;
             }
             if (c) {
-                searchParams.length==0 ? searchParams="" : searchParams=searchParams+"&";
+                searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
                 searchParams=searchParams+"c="+c;
             }
             if (p) {
-                searchParams.length==0 ? searchParams="" : searchParams=searchParams+"&";
+                searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
                 searchParams=searchParams+"p="+p;
             }
             if (t) {
-                searchParams.length==0 ? searchParams="" : searchParams=searchParams+"&";
+                searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
                 searchParams=searchParams+"t="+t;
             }
 
             searchParams=searchParams+"&g="+g;
 
-            $http.get(Server+"cupon?"+searchParams).success(function (data) {
+            $http.get(Server+"cupon/?"+searchParams).success(function (data) {
                 document.getElementById('cuponSearch').className="btn-back2sr";
                 d=document.getElementById('cuponBack');
                 d.className=d.className.replace('btn-back2sr',"");
@@ -134,7 +140,7 @@ angular.module('starter')
             var geo = geoFactory.getGeo();
             var d = "4000";
             var g = geo.lat+","+geo.long+","+d;
-            $http.get(Server+"cupon?g="+g).success(function (data) {
+            $http.get(Server+"cupon/?g="+g).success(function (data) {
                 $scope.cupons=data;
             })
             .finally(function() {

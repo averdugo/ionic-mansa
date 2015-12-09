@@ -13,8 +13,9 @@ angular.module('starter')
              .then(function (position) {
                    var lat  = position.coords.latitude;
                    var long = position.coords.longitude;
-                   
-                   $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=10000").success(function (data) {
+
+                   $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
+                       console.log(data);
                         $scope.cupons=data;
                         $ionicLoading.hide();
                    }).error(function (err) {
@@ -75,13 +76,13 @@ angular.module('starter')
             });
 
             var geo = geoFactory.getGeo();
-            
+
             var termsin = [
               $scope.searchData.q2,
               $scope.searchData.q1
             ];
             var terms = [];
-            
+
             for (var i = 0; i < termsin.length; i++) {
                 if (termsin[i]) terms.push(termsin[i]);
             }

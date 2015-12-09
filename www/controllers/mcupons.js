@@ -5,6 +5,8 @@ angular.module('starter')
         $scope.string="";
         $scope.rate = 3;
         $scope.max = 5;
+        $scope.rating = 3;
+        $scope.cIdr = "";
 
         var cuponStorage= JSON.parse(localStorage["cupones"]);
         var promise;
@@ -43,6 +45,7 @@ angular.module('starter')
                     localStorage.cupones = JSON.stringify(cuponStorage);
                     $scope.closeqrG();
                     $scope.ranking();
+                    $scope.cIdr=id;
                 }
             }, function errorCallback(response) {
                 $ionicLoading.show({
@@ -69,14 +72,73 @@ angular.module('starter')
             $scope.modal.hide();
             $interval.cancel(promise);
         };
+        $scope.rank=function(a){
 
+            switch(a) {
+                case '1':
+                    document.getElementById("r2").className="ion-ios-star-outline ro";
+                    document.getElementById("r3").className="ion-ios-star-outline ro";
+                    document.getElementById("r4").className="ion-ios-star-outline ro";
+                    document.getElementById("r5").className="ion-ios-star-outline ro";
+                    document.getElementById("r1").className = "ion-ios-star ro";
+                    $scope.rating = 1;
+                    break;
+                case '2':
+                    document.getElementById("r3").className="ion-ios-star-outline ro";
+                    document.getElementById("r4").className="ion-ios-star-outline ro";
+                    document.getElementById("r5").className="ion-ios-star-outline ro";
+                    document.getElementById("r1").className = "ion-ios-star ro";
+                    document.getElementById("r2").className = "ion-ios-star ro";
+                    $scope.rating = 2;
+                    break;
+                case '3':
+                    document.getElementById("r4").className="ion-ios-star-outline ro";
+                    document.getElementById("r5").className="ion-ios-star-outline ro";
+                    document.getElementById("r1").className = "ion-ios-star ro";
+                    document.getElementById("r2").className = "ion-ios-star ro";
+                    document.getElementById("r3").className = "ion-ios-star ro";
+                    $scope.rating = 3;
+                    break;
+                case '4':
+                    document.getElementById("r5").className="ion-ios-star-outline ro";
+                    document.getElementById("r1").className = "ion-ios-star ro";
+                    document.getElementById("r2").className = "ion-ios-star ro";
+                    document.getElementById("r3").className = "ion-ios-star ro";
+                    document.getElementById("r4").className = "ion-ios-star ro";
+                    $scope.rating = 4;
+                    break;
+                case '5':
+                    document.getElementById("r1").className = "ion-ios-star ro";
+                    document.getElementById("r2").className = "ion-ios-star ro";
+                    document.getElementById("r3").className = "ion-ios-star ro";
+                    document.getElementById("r4").className = "ion-ios-star ro";
+                    document.getElementById("r5").className = "ion-ios-star ro";
+                    $scope.rating = 5;
+                    break;
+            }
+        }
         $scope.ranking = function() {
             $scope.modal2.show();
         };
 
-        $scope.rating = {};
+
 
         $scope.doRate= function(){
-            console.log($scope.rating);
+            console.log($scope.rating+" "+$scope.cIdr);
+            var device= localStorage["device_id"];
+            $http({
+                method: 'PATCH',
+                data: JSON.stringify({rating:$scope.rating}),
+                url: Server+"redemption/"+id
+            }).then(function successCallback(data) {
+                console.log(data);
+                $ionicLoading.show({
+                    template: '<div class="alertL"><h1>GRACIAS</h1><p>CUPON EVALUADO</p></div>',
+                    duration: 6000
+                });
+
+            }, function errorCallback(response) {
+                console.log(response)
+            });
         }
   });

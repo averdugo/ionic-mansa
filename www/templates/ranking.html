@@ -30,17 +30,17 @@
           <h2>CALIFICA</h2>
           <h1>TU EXPERIENCIA</h1>
           <div id="rating">
-            <i id="r1" class="ion-ios-star-outline" ng-click="rank(1)"></i>
-            <i id="r2" class="ion-ios-star-outline" ng-click="rank(2)"></i>
-            <i id="r3" class="ion-ios-star-outline" ng-click="rank(3)"></i>
-            <i id="r4" class="ion-ios-star-outline" ng-click="rank(4)"></i>
-            <i id="r5" class="ion-ios-star-outline" ng-click="rank(5)"></i>
+            <i id="r1" class="ion-ios-star-outline ro" ng-click="rank('1')"></i>
+            <i id="r2" class="ion-ios-star-outline ro" ng-click="rank('2')"></i>
+            <i id="r3" class="ion-ios-star-outline ro" ng-click="rank('3')"></i>
+            <i id="r4" class="ion-ios-star-outline ro" ng-click="rank('4')"></i>
+            <i id="r5" class="ion-ios-star-outline ro" ng-click="rank('5')"></i>
           </div>
 
       </div>
     <form ng-submit="doRate()">
       <div class="list">
-            <input id="ratingHidden" type="hidden" ng-model="rating.value">
+            
         <label class="item">
           <button class="button button-block button-balanced" type="submit">ENVIAR</button>
         </label>

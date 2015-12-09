@@ -127,6 +127,7 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
       };
     });
   var deviceReady = function() {
+    //console.log("DEVICE READY!");
     if (window.localStorage.user && window.localStorage.device_id) {
       $urlRouterProvider.otherwise('/app/cupons');
     }else {
@@ -136,11 +137,16 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
 
 
   if (typeof cordova == 'undefined' || cordova.platformId=='browser') {
-
     deviceReady();
   }
   else {
-    document.addEventListener('deviceready', deviceReady, false);
+    //console.log("DEVICE READY?");
+    //document.addEventListener('deviceready', deviceReady, false);
+    if (window.localStorage.user && window.localStorage.device_id) {
+      $urlRouterProvider.otherwise('/app/cupons');
+    }else {
+      $urlRouterProvider.otherwise('/app/inicio');
+    }
   }
   // if none of the above states are matched, use this as the fallback
 });

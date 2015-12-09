@@ -14,10 +14,12 @@ angular.module('starter')
     $scope.string ="";
     var id= $stateParams.cuponId;
 
-    $scope.shareF = function() {
+    $scope.shareF = function(a) {
 
+        var message = a.description+" "+a.price;
+        var url = 'http://cupon.mansapromo.cl/cupon/view/'+a.id;
         $cordovaSocialSharing
-            .shareViaFacebookWithPasteMessageHint('Tested', null, "http://www.fizerkhan.com/blog/posts/Social-Sharing-in-Ionic-application.html") // Share via native share sheet
+            .shareViaFacebookWithPasteMessageHint(message, null, url) // Share via native share sheet
             .then(function(result) {
                 alert('success');
                 console.log(result);
@@ -27,9 +29,17 @@ angular.module('starter')
 
 
     }
-    $scope.shareW= function(){
+    $scope.shareW= function(a){
+        var message = a.description+" "+a.price;
+        var url = 'http://cupon.mansapromo.cl/cupon/view/'+a.id;
+        if (a.image_id == null) {
+            var img = null
+        }else {
+            var img = 'http://skizzordz.exis.cl:8000/image/scale/600/600px/'+a.image_id;
+        }
+
         $cordovaSocialSharing
-            .shareViaWhatsApp('Tested', 'http://yamaki.com.co/kla-promo/img/PROMO-KLA-FEB2013-01_r3_c2.jpg' , "http://www.fizerkhan.com/blog/posts/Social-Sharing-in-Ionic-application.html") // Share via native share sheet
+            .shareViaWhatsApp(message, img, url) // Share via native share sheet
             .then(function(result) {
                 alert('success');
                 console.log(result);
@@ -38,9 +48,16 @@ angular.module('starter')
             });
     }
 
-    $scope.shareT= function(){
+    $scope.shareT= function(a){
+        var message = a.description+" "+a.price;
+        var url = 'http://cupon.mansapromo.cl/cupon/view/'+a.id;
+        if (a.image_id == null) {
+            var img = null
+        }else {
+            var img = 'http://skizzordz.exis.cl:8000/image/scale/600/600px/'+a.image_id;
+        }
         $cordovaSocialSharing
-            .shareViaTwitter('Tested', 'http://yamaki.com.co/kla-promo/img/PROMO-KLA-FEB2013-01_r3_c2.jpg' , "http://www.fizerkhan.com/blog/posts/Social-Sharing-in-Ionic-application.html") // Share via native share sheet
+            .shareViaTwitter('Tested', img, url) // Share via native share sheet
             .then(function(result) {
                 alert('success');
                 console.log(result);

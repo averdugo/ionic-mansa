@@ -9,7 +9,7 @@ angular.module('starter')
 
         $http({
             method: 'GET',
-            url: Server+"cupon?s="+id
+            url: Server+"cupon/?s="+id
         }).then(function successCallback(data) {
             $scope.cupons=data.data;
             $ionicLoading.hide();

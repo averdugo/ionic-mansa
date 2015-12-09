@@ -15,7 +15,6 @@ angular.module('starter')
                    var long = position.coords.longitude;
 
                    $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
-                       console.log(data);
                         $scope.cupons=data;
                         $ionicLoading.hide();
                    }).error(function (err) {

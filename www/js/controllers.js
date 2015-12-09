@@ -141,8 +141,10 @@ angular.module('starter.controllers', ['ngOpenFB'])
             })
             if (!window.localStorage['cupones'])
             {
-                alert("Aun no tienes Cupones Crea tu Mansa Promo");
-                $ionicLoading.hide();
+                $ionicLoading.show({
+                    template: '<div class="alertL"><h1>UPS!</h1><p>NO TIENES CUPONES</p></div>',
+                    duration: 6000
+                });
                 //location.href="#/app/cupons";
             }else
             {

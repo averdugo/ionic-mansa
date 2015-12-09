@@ -16,7 +16,7 @@ angular.module('starter')
         var store_id = own.stores[0].id;
         //console.log($scope.owner);
 
-        $http.get(Server+"cupon?s="+store_id).success(function (data) {
+        $http.get(Server+"cupon/?s="+store_id).success(function (data) {
             $scope.cupons=data;
             $ionicLoading.hide();
         }).error(function (err) {

@@ -7,7 +7,7 @@ angular.module('starter')
                    var lat  = position.coords.latitude
                    var long = position.coords.longitude
 
-                   $http.get(Server+"cupon?lat="+lat+"&lon="+long+"&maxdist=5000").success(function (cupons) {
+                   $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=5000").success(function (cupons) {
                          console.log(cupons)
                          $ionicLoading.hide();
                    }).error(function (err) {

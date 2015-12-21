@@ -111,7 +111,19 @@ angular.module('starter')
                 url: Server+"cupon/"
             }).then(function successCallback(data) {
                 console.log(data);
-                $scope.modal.hide();
+                $ionicLoading.show({
+                    template: '<div class="alertL"><h1>GENIAL!</h1><p>CUPON CREADO</p></div>',
+                    duration: 6000
+                });
+                $http.get(Server+"cupon/?s="+store_id).success(function (data) {
+                    $scope.cupons=data;
+                    $ionicLoading.hide();
+                    $scope.modal.hide();
+                }).error(function (err) {
+                    console.log(err);
+                    $ionicLoading.hide();
+                });
+
             }, function errorCallback(response) {
                 console.log(response)
                 $scope.modal.hide();

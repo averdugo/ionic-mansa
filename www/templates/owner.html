@@ -59,7 +59,7 @@ border-bottom: 1px solid #ee4931;
         <div class="list list-cupons" ng-repeat="cupon in cupons">
             <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}" style="padding-top:20px">
                 <div class=" item-avatar" ng-if="cupon.image_id == null">
-                    <img src="img/promo1.jpg" >
+                    <img src="img/icon.png" >
                 </div>
                 <div class=" item-avatar" ng-if="cupon.image_id != null">
                     <img ng-src="http://skizzordz.exis.cl:8000/image/scale/600/600px/{{cupon.image_id}}" >
@@ -93,7 +93,7 @@ border-bottom: 1px solid #ee4931;
                 Inicio
               </a>
               <a class="tab-item" ng-click="leerQr()">
-                <i class="icon ion-android-wifi"></i>
+                <i class="icon ion-aperture"></i>
                 Scan
               </a>
               <a class="tab-item" ng-click="create()">

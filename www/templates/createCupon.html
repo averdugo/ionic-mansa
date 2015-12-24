@@ -5,25 +5,26 @@
 </style>
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title colorP" style="font-weight:bolder;font-size:18px">CREAR CUPON</h1>
+    <h1 class="title" style="width:100%;left:0!importantright: 0;"><img src="img/logo.png" class="logo"></h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeCuponM()"><i class="ion-close"></i></button>
     </div>
   </ion-header-bar>
   <ion-content>
+      <div class="container"><h1 style="margin-top: 30px;color: #ee4931!important;">CREAR CUPON</h1></div>
     <form ng-submit="doCupon()">
       <div class="list">
 
         <label class="item item-input">
-          <span class="input-label colorP">Descripcion</span>
+          <span class="input-label ">Descripcion</span>
           <input type="text" ng-model="cuponData.description">
         </label>
         <label class="item item-input">
-          <span class="input-label colorP">Precio</span>
+          <span class="input-label ">Precio</span>
           <input type="text" ng-model="cuponData.price">
         </label>
         <label class="item item-input">
-          <span class="input-label colorP">Stock</span>
+          <span class="input-label ">Stock</span>
           <input type="text" ng-model="cuponData.stock">
         </label>
 

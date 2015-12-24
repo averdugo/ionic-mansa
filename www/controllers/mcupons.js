@@ -24,6 +24,8 @@ angular.module('starter')
         });
 
         function qrRedem(id){
+            $scope.closeqrG();
+            $scope.ranking();
             var device= localStorage["device_id"];
             $http({
                 method: 'GET',

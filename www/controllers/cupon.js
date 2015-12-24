@@ -81,20 +81,22 @@ angular.module('starter')
     };
 
 
-    $scope.saveQr = function(a,b,c,d) {
+    $scope.saveQr = function(a,b,c,d,e) {
         var uuid = localStorage["device_id"];
         var sCupon = {
           "uuid" : uuid,
           "cupon_id" : a,
           "desc" : b,
           "price" : c,
-          "address" : d
+          "address" : d,
+          "name" : e
         }
 
         var a = [];
         if (localStorage.getItem('cupones')) {
           $ionicLoading.show({
-              template: '<div class="alertL"><h1>Cupón Guardado</h1><p>Muestra este cupón en el local establecido y disfruta de esta Mansa Promo</p></div>'
+              template: '<div class="alertL"><h1>Cupón Guardado</h1><p>Muestra este cupón en el local establecido y disfruta de esta Mansa Promo</p></div>',
+              duration: 3000
 
           });
 

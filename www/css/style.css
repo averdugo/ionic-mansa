@@ -9,6 +9,9 @@ input{
 .bar .title.title-left{
     text-align: center;
 }
+.item h2{
+    font-size: 14px;
+}
 .bar-header{
     display: -webkit-box;
   display: -webkit-flex;
@@ -143,6 +146,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .list-cupons{
     margin-top: 16px;
     border-bottom: 1px solid #ddd;
+    margin-bottom: 16px;
 
 }
 .slider-slides{
@@ -196,7 +200,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 .alertL h1{
     margin: 30px 0 20px;
-    color: #ff01ce!important;
+    color: #ee4931!important;
     font-size: 44px;
     font-weight: bolder;
 }
@@ -238,14 +242,17 @@ margin-top: -2px!important;
     color: white;
     text-transform: uppercase;
     width: 70%;
+    font-size: 12px;
   white-space: pre-line;
 }
  h2.desc{
-    color:#ee4931;
+     color: #fff;
+    letter-spacing: 1px;
     font-family: 'Bowlby One SC'!important;
     text-transform: uppercase;
-    width: 70%;
+    width: 100%;
     white-space: pre-line;
+    padding-top: 0;
 }
  p.price{
     position: absolute;
@@ -269,7 +276,7 @@ margin-top: -2px!important;
     border-style: none none solid none;
 }
 #cupons .item-thumbnail-left{
-  padding-top: 10px;
+  padding-top: 0px;
 }
 h1 {
   display: inline-block;

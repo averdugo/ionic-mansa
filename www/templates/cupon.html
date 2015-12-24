@@ -46,7 +46,7 @@
       </div>
       <!--Social-->
     <div class="button-bar" style="margin-top: -10px;">
-        <button class="button  ion-social-facebook button-positive" ng-click="shareF(cupon)" style="font-size: 40px;"></button>
+        <button class="button  ion-social-facebook button-positive" ng-click="shareF(cupon)" style="font-size: 40px;background-color: #3a589e;"></button>
         <button class="button  ion-social-whatsapp button-balanced" ng-click="shareW(cupon)" style="font-size: 40px;"></button>
         <button class="button  ion-social-twitter button-calm" ng-click="shareT(cupon)" style="font-size: 40px;"></button>
     </div>
@@ -54,7 +54,7 @@
     <div class="row">
       <div class="col" align="center">
         <h2>{{cupon.description}}</h2>
-        <h4><strong class="colorP">{{cupon.price}}</strong></h4>
+        <h4><strong class="colorP">$ {{cupon.price}}</strong></h4>
       </div>
     </div>
     <div class="row">
@@ -81,6 +81,7 @@
 
     <div class="row">
       <div class="col" align="center" style="margin-bottom:40px">
+          <h3>{{cupon.store.name}}</h3>
         <h4 class=""><strong class="colorP"><i class="icon ion-map"></i></strong>  {{cupon.store.address}}, {{cupon.store.comuna}}, {{cupon.store.region}}</h4>
         <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="false" data-tap-disabled="true">
             <ui-gmap-marker idKey='0' coords='coords.center' draggable="false"></ui-gmap-marker>

@@ -1,7 +1,7 @@
 Geolocation = {
 	getCurrentPosition: function(options)
 	{
-		var located = new $.Deferred;
+		var located = $.Deferred();
 		
 		
 		// Hide the complexities of the load mechanism...

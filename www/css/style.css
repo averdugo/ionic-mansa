@@ -132,7 +132,10 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
     border:none;
 }
 .modal{
-        background-color: rgb(21,21,21);
+        background-color: #4f2770;
+}
+form{
+        background: rgb(21,21,21);
 }
 .input-label{
     color: white;
@@ -305,6 +308,10 @@ top: 40px;
     background-color: #140e4b;
     padding: 15px;
 }
+.bar .title.title-left{
+    right: 20px!important
+}
+
 @media (max-width: 320px) {
   .logo {
     margin-top: 5px;

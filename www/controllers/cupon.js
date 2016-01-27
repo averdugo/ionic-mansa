@@ -67,23 +67,16 @@ angular.module('starter')
             });
     }
 
-
-
-    $scope.qrG = function() {
-        var device = localStorage["device_id"];
-        var id= $stateParams.cuponId;
-        var qrcode = JSON.stringify({cupon_id: id, device_id: device});
-        $scope.string =qrcode;
-        $scope.modal.show();
-    };
-
     $scope.closeqrG = function() {
         $scope.modal.hide();
     };
 
-
     $scope.saveQr = function(a,b,c,d,e) {
         var uuid = localStorage["device_id"];
+        var qrcode = JSON.stringify({cupon_id: a, device_id: uuid});
+        $scope.string =qrcode;
+        $scope.modal.show();
+
         var sCupon = {
           "uuid" : uuid,
           "cupon_id" : a,
@@ -95,11 +88,12 @@ angular.module('starter')
 
         var a = [];
         if (localStorage.getItem('cupones')) {
-          $ionicLoading.show({
+
+          /*$ionicLoading.show({
               template: '<div class="alertL"><h1>Cupón Guardado</h1><p>Muestra este cupón en el local establecido y disfruta de esta Mansa Promo</p></div>',
               duration: 3000
 
-          });
+          });*/
 
           a = JSON.parse(localStorage.getItem('cupones'));
         }
@@ -107,7 +101,6 @@ angular.module('starter')
         a.push(sCupon);
         localStorage.setItem('cupones', JSON.stringify(a));
 
-        $scope.modal.hide();
     };
 
     $scope.getChecks = function(id){
@@ -128,12 +121,10 @@ angular.module('starter')
 
         var horario = data.data.store.hours;
         $scope.cupon=data.data;
-        console.log(data.data);
         $scope.cupon.horario=[];
         angular.forEach(horario,function(v,k){
             $scope.cupon.horario.push(dia[v.from]+' a '+ dia[v.to]+' de '+v.open+' hasta '+v.close)
         });
-        console.log($scope.cupon.horario);
 
         $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 16 };
         $scope.coords={center:{latitude:$scope.cupon.store.coordinates.lat,longitude:$scope.cupon.store.coordinates.lon}};

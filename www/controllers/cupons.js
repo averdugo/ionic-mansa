@@ -1,6 +1,6 @@
 angular.module('starter')
 
-    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, geoFactory) {
+    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB) {
 
         $ionicLoading.show({
             template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -66,78 +66,84 @@ angular.module('starter')
                 template: '<ion-spinner icon="ripple"></ion-spinner>'
             });
 
-            var geo = geoFactory.getGeo();
+            Geolocation
+                 .getCurrentPosition(posOptions)
+                 .then(function (position) {
+                    var termsin = [
+                      $scope.searchData.q2,
+                      $scope.searchData.q1
+                    ];
+                    var terms = [];
 
-            var termsin = [
-              $scope.searchData.q2,
-              $scope.searchData.q1
-            ];
-            var terms = [];
+                    for (var i = 0; i < termsin.length; i++) {
+                        if (termsin[i]) terms.push(termsin[i]);
+                    }
+                    var q = terms.join(' ');
+                    var c = $scope.searchData.c;
+                    var p = $scope.searchData.p;
+                    var t = $scope.searchData.t;
+                    var d = $scope.searchData.dist.value+"000";
+                    var g = geo.lat+","+geo.long+","+d;
+                    var searchParams="";
 
-            for (var i = 0; i < termsin.length; i++) {
-                if (termsin[i]) terms.push(termsin[i]);
-            }
-            var q = terms.join(' ');
-            var c = $scope.searchData.c;
-            var p = $scope.searchData.p;
-            var t = $scope.searchData.t;
-            var d = $scope.searchData.dist.value+"000";
-            var g = geo.lat+","+geo.long+","+d;
-            var searchParams="";
+                    if (q) {
+                        searchParams="q="+q;
+                    }
+                    if (c) {
+                        searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
+                        searchParams=searchParams+"c="+c;
+                    }
+                    if (p) {
+                        searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
+                        searchParams=searchParams+"p="+p;
+                    }
+                    if (t) {
+                        searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
+                        searchParams=searchParams+"t="+t;
+                    }
 
-            if (q) {
-                searchParams="q="+q;
-            }
-            if (c) {
-                searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
-                searchParams=searchParams+"c="+c;
-            }
-            if (p) {
-                searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
-                searchParams=searchParams+"p="+p;
-            }
-            if (t) {
-                searchParams.length===0 ? searchParams="" : searchParams=searchParams+"&";
-                searchParams=searchParams+"t="+t;
-            }
+                    searchParams=searchParams+"&g="+g;
 
-            searchParams=searchParams+"&g="+g;
+                    $http.get(Server+"cupon/?"+searchParams).success(function (data) {
+                        document.getElementById('cuponSearch').className="btn-back2sr";
+                        d=document.getElementById('cuponBack');
+                        d.className=d.className.replace('btn-back2sr',"");
+                        if (data===[]) {
+                            $ionicLoading.show({
+                                template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY CUPONES</p></div>',
+                                duration: 6000
+                            });
 
-            $http.get(Server+"cupon/?"+searchParams).success(function (data) {
-                document.getElementById('cuponSearch').className="btn-back2sr";
-                d=document.getElementById('cuponBack');
-                d.className=d.className.replace('btn-back2sr',"");
-                if (data===[]) {
-                    $ionicLoading.show({
-                        template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY CUPONES</p></div>',
-                        duration: 6000
+                        }
+                        $scope.cupons=data;
+                        $ionicLoading.hide();
+                        
+                    }).error(function (err) {
+                            console.log(err);
+                            $ionicLoading.show({
+                                template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
+                                duration: 6000
+                            });
+
                     });
-
-                }
-                $scope.cupons=data;
-                $ionicLoading.hide();
-            }).error(function (err) {
-                    console.log(err);
-                    $ionicLoading.show({
-                        template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
-                        duration: 6000
-                    });
-
             });
-
+            
             $scope.modal.hide();
 
         };
         $scope.doRefresh = function() {
-            var geo = geoFactory.getGeo();
-            var d = "10000";
-            var g = geo.lat+","+geo.long+","+d;
-            $http.get(Server+"cupon/?g="+g).success(function (data) {
-                $scope.cupons=data;
-            })
-            .finally(function() {
-              // Stop the ion-refresher from spinning
-              $scope.$broadcast('scroll.refreshComplete');
-            });
+            Geolocation
+                 .getCurrentPosition(posOptions)
+                 .then(function (geo) {
+                    var d = "10000";
+                    var g = geo.lat+","+geo.long+","+d;
+                    $http.get(Server+"cupon/?g="+g).success(function (data) {
+                        $scope.cupons=data;
+                    })
+                    .finally(function() {
+                      // Stop the ion-refresher from spinning
+                      $scope.$broadcast('scroll.refreshComplete');
+                    });
+                });
          };
     });

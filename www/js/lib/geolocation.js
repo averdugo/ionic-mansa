@@ -5,52 +5,52 @@ Geolocation = {
 		
 		
 		// Hide the complexities of the load mechanism...
-		var _getGeo = function(dontSetSettings)
+		var _getGeo = function()
 		{
-			var getGeoInterval = null;
+			var isLocationEnabled = 
+				typeof cordova.plugins.diagnostic.isGpsLocationEnabled != 'undefined' ?
+					cordova.plugins.diagnostic.isGpsLocationEnabled :
+					cordova.plugins.diagnostic.isLocationAuthorized;
 			
-			// This is a hideous hack to work around load ordering...
-			// -Phillip Whelan
-			if (typeof cordova.plugins == 'undefined')
-			{
-				console.log('cordova plugins not loaded...');
-				setTimeout(_getGeo, 1000);
-				return;
-			}
-			if (typeof cordova.plugins.diagnostic == 'undefined')
-			{
-				console.log('cordova diagnostic plugin not loaded...');
-				setTimeout(_getGeo, 1000);
-				return;
-			}
-			
-			cordova.plugins.diagnostic.isGpsLocationEnabled(
+			isLocationEnabled
+			(
 				function(enabled)
 				{
 					console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
-					if (!enabled && !dontSetSettings)
+					if (!enabled)
 					{
-						cordova.plugins.locationAccuracy.request(
-							_getGeo(true), 
-							console.log,
-							cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY
-						);
-						cordova.plugins.diagnostic.switchToLocationSettings();
-						getGeoInterval = setInterval(
-							function() {
-								_getGeo(true);
-							}, 
-							2500
-						);
+						if (typeof cordova.plugins.locationAccuracy != 'undefined')
+						{
+							cordova.plugins.locationAccuracy.request(
+								_getGeo, 
+								console.log,
+								cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY
+							);
+							
+							cordova.plugins.diagnostic.switchToLocationSettings();
+						}
+						else 
+						{
+							cordova.plugins.diagnostic.getLocationAuthorizationStatus(
+								function(status) 
+								{
+									if (status == 'not_determined')
+									{
+										cordova.plugins.diagnostic.requestLocationAuthorization(
+											_getGeo,
+											function(error) {
+												alert("ERROR: " + error);
+											}
+										);
+									}
+								}
+							);
+							
+						}
 						
 					}
 					else if (enabled)
 					{
-						if (getGeoInterval)
-						{
-							clearInterval(getGeoInterval);
-						}
-						
 						navigator.geolocation.getCurrentPosition(
 							function(position) {
 								located.resolve(position);
@@ -65,7 +65,6 @@ Geolocation = {
 							},
 							{ enableHighAccuracy: true }
 						);
-						
 					}
 				},
 				function(error)
@@ -92,7 +91,11 @@ Geolocation = {
 		}
 		else
 		{
-			_getGeo();	
+			document.addEventListener(
+				"deviceReady", 
+				_getGeo,
+				false
+			);
 		}
 		
 		return located.promise();

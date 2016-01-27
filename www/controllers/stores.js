@@ -6,11 +6,11 @@ angular.module('starter')
         });
         var posOptions = {timeout: 10000, enableHighAccuracy: true};
 
-        $cordovaGeolocation
+        Geolocation
              .getCurrentPosition(posOptions)
              .then(function (position) {
-                   var lat  = position.coords.latitude
-                   var long = position.coords.longitude
+                   var lat  = position.coords.latitude;
+                   var long = position.coords.longitude;
 
                    $http.get(Server+"store/?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
                         $scope.stores=data;

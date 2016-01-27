@@ -2,23 +2,32 @@
 .bar-header{
   display: flex;
 }
+#cupons .item-avatar{
+  padding-left: 0!important;
+  min-height: 0!important;
+}
+
 </style>
-<ion-view id="">
+<ion-view id="cupons">
     <ion-nav-title>
         <img src="img/logo.png" class="logo">
     </ion-nav-title>
 
-    <ion-content style="top:70px">
-      <div class="container"><h1>Mis Cupones</h1></div>
+    <ion-content style="top:61px">
+      <div class="container cTiu"><h1 style="margin-bottom:0px">MIS CUPONES</h1></div>
+
 
         <div class="list list-cupons" ng-repeat="codigo in codigos">
-            <a class="item item-thumbnail-left" ng-click="qrS({{codigo.cupon_id}})">
-                <img src="img/qr.jpg"/>
-                <h2 class="desc" style="font-weight:bold">{{codigo.desc}}</h2>
-                <p class="price" style="float:right">${{codigo.price}}</p>
-                <p>{{codigo.name}}</p>
-                <p class="naMe" style="color: #fff;">{{codigo.address}}</p>
-
+            <a class="item item-thumbnail-left" ng-click="qrS({{codigo.cupon_id}})" style="padding-left: 80px;">
+                <div class=" item-avatar storeItem" >
+                    <img src="img/icon.png" class="storeItem" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
+                </div>
+                <div style="width: 65%;">
+                    <h2 class="desc colorP" style="font-family:'Cabin'!important;font-weight:bold">{{codigo.desc}}</h2>
+                    <p style="color: #fff;">{{codigo.name}}</p>
+                    <p class="naMe" style="color: #fff;">{{codigo.address}}</p>
+                </div>
+                <p class="price kmS " style="background-color: #9e1981;">${{codigo.price}}</p>
             </a>
         </div>
 

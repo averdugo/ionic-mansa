@@ -1,24 +1,16 @@
 <style>
- #cuponS p, #cuponS span{
-  font-family: 'Cabin'!important;
+#cupons p, #cupons span{
+ font-family: 'Cabin'!important;
 }
- .h1ss{
-  font-family: 'Bowlby One SC'!important;
-  text-transform: uppercase;
-  font-size: 20px;
-  text-align:center;
+#cupons h1{
+ font-weight: 400;
+ color:#ee4931
 }
-#cuponS h1{
-  font-weight: bold;
+#cupons .item-avatar{
+ padding-left: 0!important;
+ min-height: 0!important;
 }
-#cuponS .item-avatar{
-  padding-left: 0!important;
-  min-height: 0!important;
-}
-#cuponS .item-avatar > img:first-child{
-  min-width: 70px!important;
-  min-height: 70px!important;
-}
+
 
 .bar .button.back-button{
     display: none;
@@ -34,25 +26,39 @@
 }
 
 </style>
-<ion-view view-title="" id="cuponS">
+<ion-view view-title="" id="cupons">
   <ion-nav-title>
-      <i id="cuponBack" class="icon ion-chevron-left btn-back2" ng-click="back()"></i>
+
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
-  <ion-content style="top:66px">
-    <h2 class="h1ss colorP">Local {{cupons[0].store.name}}</h2>
-    <div style="margin-top: -14px;">
-      <div class="list list-cupons" ng-repeat="cupon in cupons">
-          <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
-              <div class=" item-avatar">
-                <img src="img/promo1.jpg">
-              </div>
-              <h2 class="desc">{{cupon.description}}</h2>
-              <p class="price">${{cupon.price}}</p>
-              <p class="naMe">{{cupon.store.address}}</p>
+  <ion-content style="top:61px">
 
-          </a>
-      </div>
+    <div class="container cTiu"><h1 style="margin-bottom:0px;">Local {{cupons[0].store.name}}</h1></div>
+
+    <div style="margin-top: 10px;">
+        <div class="list list-cupons" ng-repeat="cupon in cupons">
+            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
+                <div class=" item-avatar" ng-if="cupon.image_id == null" style="   ">
+                    <img src="img/icon.png" style="top: 10px;">
+                </div>
+                <div class=" item-avatar" ng-if="cupon.image_id != null" style="    ">
+                    <img ng-src="http://skizzordz.exis.cl:8000/image/scale/140/140/{{cupon.logo_id}}" style="top: 0;">
+                </div>
+                <h2 class="desc">{{cupon.title}}</h2>
+                <p class="">
+                    <div id="rating" style="color: #fadb0a;">
+                        <i id="r1" class="ion-ios-star ro" ng-click="rank('1')"></i>
+                        <i id="r2" class="ion-ios-star ro" ng-click="rank('2')"></i>
+                        <i id="r3" class="ion-ios-star-half ro" ng-click="rank('3')"></i>
+                        <i id="r4" class="ion-ios-star-outline ro" ng-click="rank('4')"></i>
+                        <i id="r5" class="ion-ios-star-outline ro" ng-click="rank('5')"></i>
+                    </div>
+                </p>
+                <p class="naMe">{{cupon.store.name}} / {{cupon.store.storetype.label}}</p>
+                <p style="color:white"> {{cupon.store.distance | number:-1}} km </p>
+                <p class="price">${{cupon.price}}</p>
+            </a>
+        </div>
     </div>
   </ion-content>
 

@@ -1,9 +1,7 @@
 <style>
-.col_2 {
-border-bottom: 1px solid #ee4931;
-}
+
 .numO{
-    font-size: 40px;
+    font-size: 50px;
 }
 .cupons p, #cupons span{
  font-family: 'Cabin'!important;
@@ -28,8 +26,24 @@ border-bottom: 1px solid #ee4931;
     font-size: 18px!important;
     color:white!important;
 }
+.canje1{
+    background-color: #ee4931!important;
+    width: 80%;
+    border-radius: 0px 10px 10px 0;
+    margin-left: -10px;
+    text-align: center;
+    padding: 3px;
+}
+.canje2{
+    background-color: #33cd5f!important;
+    width: 80%;
+    border-radius: 10px 0px 0px 10px;
+    margin-right: -10px;
+    text-align: center;
+    padding: 3px;
+}
 </style>
-<ion-view view-title="">
+<ion-view id="cupons" view-title="">
   <ion-nav-title>
       <img src="img/logo.png" class="logo">
     </ion-nav-title>
@@ -39,34 +53,40 @@ border-bottom: 1px solid #ee4931;
       <div class="col col_2" align="center">
         <h4 class="colorP" style="margin:0">TIENDA</h4>
 		<h1 style="margin:0 0 5px;text-transform:uppercase">{{owner.stores[0].name}}</h1>
-        <p style="color:white">{{owner.stores[0].address}}</p>
+        <p style="color:white;font-size: 20px;">{{owner.stores[0].address}}</p>
         <h4><strong class="colorP">{{cupon.price}}</strong></h4>
       </div>
     </div>
 
     <div class="row">
-      <div class="col" align="center">
-        <h4><strong class="colorP numO">{{canjeados}}</strong></h4>
-        <h6 class="mb" style="font-size:20px">Canjeados</h6>
+      <div class="col" >
+          <div class="canje1">
+              <h4  style="margin: 0px;"><strong class="numO">{{canjeados}}</strong></h4>
+              <h6 class="mb" style="font-size:20px;margin-top: 0px;">Canjeados</h6>
+          </div>
+
       </div>
-      <div class="col" align="center">
-        <h4><strong class="colorP numO">{{cupons.length}}</strong></h4>
-        <h6 class="mb" style="font-size:20px">Activos</h6>
+      <div class="col" align="right">
+          <div class="canje2">
+              <h4 style="margin: 0px;"><strong class="numO">{{cupons.length}}</strong></h4>
+              <h6 class="mb" style="font-size:20px;margin-top: 0px;">Activos</h6>
+          </div>
+
       </div>
     </div>
     <div id="homeOwn" class="cupons" style="margin-bottom:60px">
 
         <div class="list list-cupons" ng-repeat="cupon in cupons">
-            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}" style="padding-top:20px">
+            <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}" style="padding-top:10px;padding-left: 100px;">
                 <div class=" item-avatar" ng-if="cupon.image_id == null">
-                    <img src="img/icon.png" >
+                    <img src="img/icon.png" style="    min-width: 55px!important;    min-height: 55px!important;    top: 0px;">
                 </div>
                 <div class=" item-avatar" ng-if="cupon.image_id != null">
                     <img ng-src="http://skizzordz.exis.cl:8000/image/scale/600/600px/{{cupon.image_id}}" >
                 </div>
-                <h2 class="desc">{{cupon.description}}</h2>
+                <h2 class="desc">{{cupon.title}}</h2>
 
-                <p class="price">${{cupon.price}}</p>
+                <p class=""style="color:#fff">${{cupon.price}}</p>
 
 
             </a>

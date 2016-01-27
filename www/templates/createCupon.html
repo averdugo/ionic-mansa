@@ -11,21 +11,32 @@
     </div>
   </ion-header-bar>
   <ion-content>
-      <div class="container"><h1 style="margin-top: 30px;color: #ee4931!important;">CREAR CUPON</h1></div>
+      <div class="container cTiu"><h1 style="margin-bottom: 0px;">CREAR CUPON</h1></div>
     <form ng-submit="doCupon()">
       <div class="list">
+        <label class="item item-input">
+          <span class="input-label ">Nombre</span>
+          <input type="text" ng-model="cuponData.title">
+        </label>
         <label class="item item-input">
           <span class="input-label ">Descripcion</span>
           <input type="text" ng-model="cuponData.description">
         </label>
         <label class="item item-input">
-          <span class="input-label ">Precio</span>
+          <span class="input-label ">Precio</span>$
           <input type="text" ng-model="cuponData.price">
         </label>
         <label class="item item-input">
           <span class="input-label ">Stock</span>
           <input type="text" ng-model="cuponData.stock">
         </label>
+        <label class="item item-input">
+          <span class="input-label ">Stock</span>
+          <input type="date" ng-model="cuponData.expires">
+        </label>
+        <div class="button-bar" style="margin-top:10px;">
+            <button class="button button-balanced" type="submit" style="font-size: 28px;font-weight: bolder;">CREAR</button>
+        </div>
       </div>
     </form>
   </ion-content>

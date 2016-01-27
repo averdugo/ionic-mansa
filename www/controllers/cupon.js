@@ -88,13 +88,6 @@ angular.module('starter')
 
         var a = [];
         if (localStorage.getItem('cupones')) {
-
-          /*$ionicLoading.show({
-              template: '<div class="alertL"><h1>Cupón Guardado</h1><p>Muestra este cupón en el local establecido y disfruta de esta Mansa Promo</p></div>',
-              duration: 3000
-
-          });*/
-
           a = JSON.parse(localStorage.getItem('cupones'));
         }
 
@@ -113,30 +106,36 @@ angular.module('starter')
             console.log(response)
          });
     }
+    var posOptions = {timeout: 10000, enableHighAccuracy: true};
+    Geolocation
+         .getCurrentPosition(posOptions)
+         .then(function (position) {
+               var lat  = position.coords.latitude;
+               var long = position.coords.longitude;
+               var g = lat+","+long;
+        $http({
+            method: 'GET',
+            url: Server+"cupon/"+id+"?g="+g
+        }).then(function successCallback(data) {
+            console.log(data.data);
+            var horario = data.data.store.hours;
+            $scope.cupon=data.data;
+            $scope.cupon.horario=[];
+            angular.forEach(horario,function(v,k){
+                $scope.cupon.horario.push(dia[v.from]+' a '+ dia[v.to]+' de '+v.open+' hasta '+v.close)
+            });
 
-    $http({
-        method: 'GET',
-        url: Server+"cupon/"+id
-    }).then(function successCallback(data) {
-
-        var horario = data.data.store.hours;
-        $scope.cupon=data.data;
-        $scope.cupon.horario=[];
-        angular.forEach(horario,function(v,k){
-            $scope.cupon.horario.push(dia[v.from]+' a '+ dia[v.to]+' de '+v.open+' hasta '+v.close)
-        });
-
-        $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 16 };
-        $scope.coords={center:{latitude:$scope.cupon.store.coordinates.lat,longitude:$scope.cupon.store.coordinates.lon}};
-        //getChecks($scope.cupon.id);
-        $ionicLoading.hide();
-    }, function errorCallback(response) {
-        $ionicLoading.show({
-            template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
-            duration: 6000
-        });
-        console.log(response)
-     });
-
+            $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 16 };
+            $scope.coords={center:{latitude:$scope.cupon.store.coordinates.lat,longitude:$scope.cupon.store.coordinates.lon}};
+            //getChecks($scope.cupon.id);
+            $ionicLoading.hide();
+        }, function errorCallback(response) {
+            $ionicLoading.show({
+                template: '<div class="alertL"><h1>¡UPS!</h1><p>NO HAY INTERNET</p></div>',
+                duration: 6000
+            });
+            console.log(response)
+         });
+     })
 
 });

@@ -82,7 +82,8 @@ angular.module('starter')
 
         $scope.doCupon=function(){
             $scope.cuponData.store_id =store_id;
-
+            $scope.cuponData.expires_at = moment($scope.cuponData.expires).format('YYYY-MM-DD');
+            
             $http({
                 method: 'PUT',
                 data:    $scope.cuponData,

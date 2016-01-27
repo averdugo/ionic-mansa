@@ -66,11 +66,11 @@
       <div style="margin-top: -14px;">
         <div class="list list-cupons" ng-repeat="cupon in cupons">
             <a class="item item-thumbnail-left" href="#/app/cupon/{{cupon.id}}">
-                <div class=" item-avatar" ng-if="cupon.image_id == null" style="   ">
+                <div class=" item-avatar" ng-if="cupon.store.logo_id == null" style="   ">
                     <img src="img/icon.png" style="top: 10px;">
                 </div>
-                <div class=" item-avatar" ng-if="cupon.image_id != null" style="    ">
-                    <img ng-src="http://skizzordz.exis.cl:8000/image/scale/140/140/{{cupon.logo_id}}" style="top: 0;">
+                <div class=" item-avatar" ng-if="cupon.store.logo_id != null" style="    ">
+                    <img src="http://hydra.lan:8000/image/{{cupon.store.logo_id}}" style="top: 10;">
                 </div>
                 <h2 class="desc">{{cupon.title}}</h2>
                 <p class="">

@@ -19,9 +19,13 @@
 
         <div class="list list-cupons" ng-repeat="codigo in codigos">
             <a class="item item-thumbnail-left" ng-click="qrS({{codigo.cupon_id}})" style="padding-left: 80px;">
-                <div class=" item-avatar storeItem" >
-                    <img src="img/icon.png" class="storeItem" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
+                <div class=" item-avatar" ng-if="cupon.store.logo_id == null" style="   ">
+                    <img src="img/icon.png" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
                 </div>
+                <div class=" item-avatar" ng-if="cupon.store.logo_id != null" style="    ">
+                    <img src="http://hydra.lan:8000/image/{{cupon.store.logo_id}}" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
+                </div>
+                
                 <div style="width: 65%;">
                     <h2 class="desc colorP" style="font-family:'Cabin'!important;font-weight:bold">{{codigo.desc}}</h2>
                     <p style="color: #fff;">{{codigo.name}}</p>

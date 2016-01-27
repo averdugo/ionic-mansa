@@ -69,6 +69,8 @@ angular.module('starter')
             Geolocation
                  .getCurrentPosition(posOptions)
                  .then(function (position) {
+                     var lat  = position.coords.latitude;
+                     var long = position.coords.longitude;
                     var termsin = [
                       $scope.searchData.q2,
                       $scope.searchData.q1
@@ -83,7 +85,7 @@ angular.module('starter')
                     var p = $scope.searchData.p;
                     var t = $scope.searchData.t;
                     var d = $scope.searchData.dist.value+"000";
-                    var g = geo.lat+","+geo.long+","+d;
+                    var g = lat+","+long+","+d;
                     var searchParams="";
 
                     if (q) {
@@ -117,7 +119,7 @@ angular.module('starter')
                         }
                         $scope.cupons=data;
                         $ionicLoading.hide();
-                        
+
                     }).error(function (err) {
                             console.log(err);
                             $ionicLoading.show({
@@ -127,7 +129,7 @@ angular.module('starter')
 
                     });
             });
-            
+
             $scope.modal.hide();
 
         };

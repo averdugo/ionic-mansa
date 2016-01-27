@@ -80,27 +80,6 @@ angular.module('starter')
 
         $scope.cuponData = {};
 
-        $scope.getPhoto = function() {
-            Camera.
-                getPicture({
-                    destinationType: 0 // Camera.DestinationType.DATA_URL
-                })
-                .then(function(imageURI) {
-                    $http({
-                        method:     'PUT',
-                        headers:    {
-                            'X-Content-Transfer-Encoding': 'base64'
-                        },
-                        url:        Server + 'image/',
-                        data:       imageURI
-                    })
-                    .then(function(img) {
-                        console.log(img);
-                        $scope.cuponData.image_id=img.id;
-                    })
-                });
-        };
-
         $scope.doCupon=function(){
             $scope.cuponData.store_id =store_id;
 

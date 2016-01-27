@@ -13,6 +13,7 @@ angular.module('starter')
 
     $scope.string ="";
     var id= $stateParams.cuponId;
+    var dia = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
 
     $scope.shareF = function(a) {
 
@@ -124,7 +125,16 @@ angular.module('starter')
         method: 'GET',
         url: Server+"cupon/"+id
     }).then(function successCallback(data) {
+
+        var horario = data.data.store.hours;
         $scope.cupon=data.data;
+        console.log(data.data);
+        $scope.cupon.horario=[];
+        angular.forEach(horario,function(v,k){
+            $scope.cupon.horario.push(dia[v.from]+' a '+ dia[v.to]+' de '+v.open+' hasta '+v.close)
+        });
+        console.log($scope.cupon.horario);
+
         $scope.map = { center: { latitude: $scope.cupon.store.coordinates.lat, longitude: $scope.cupon.store.coordinates.lon }, zoom: 16 };
         $scope.coords={center:{latitude:$scope.cupon.store.coordinates.lat,longitude:$scope.cupon.store.coordinates.lon}};
         //getChecks($scope.cupon.id);

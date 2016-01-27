@@ -5,25 +5,34 @@
 .container h1{
     font-family: 'Bowlby One SC'!important;
 }
+#cupons .item-avatar{
+  padding-left: 0!important;
+  min-height: 0!important;
+}
+.storeItem{
+
+}
 </style>
-<ion-view id="stores">
+<ion-view id="cupons">
     <ion-nav-title>
 
         <img src="img/logo.png" class="logo">
     </ion-nav-title>
 
-    <ion-content style="top:70px">
-        <div class="container"><h1 style="margin-bottom:0px;color:#ee4931">LOCALES</h1></div>
-        <div class="list list-cupons" ng-repeat="store in stores" style="    border-bottom: 1px solid #ddd">
-            <a class="item item-thumbnail-left" href="#/app/store/{{store.id}}">
-                <img src="img/icon.png">
-                <h2 class="desc colorP">{{store.name}}</h2>
-
-                <p class="naMe"style="color:white">{{store.address}}</p>
-                <p class="price" >{{store.distance | number:0 | limitTo : 3 : 0}} km</p>
+    <ion-content style="top:61px">
+        <div class="container cTiu"><h1 style="margin-bottom:0px;">LOCALES</h1></div>
+        <div class="list list-cupons" ng-repeat="store in stores">
+            <a class="item item-thumbnail-left" href="#/app/store/{{store.id}}" style="padding-left: 80px;">
+                <div class=" item-avatar storeItem" >
+                    <img src="img/icon.png" class="storeItem" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
+                </div>
+                <div style="width: 65%;">
+                    <h2 class="desc" style="margin-top:10px">{{store.name}}</h2>
+                    <p style="color:white;white-space: normal;">{{store.address}}</p>
+                </div>
+                <p class="price kmS ">{{store.distance | number:0 | limitTo : 3 : 0}} km</p>
             </a>
         </div>
-
      </ion-content>
      <ion-footer class="cuponesFooter">
          <img src="img/scrolld.png" alt="">

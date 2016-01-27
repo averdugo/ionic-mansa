@@ -16,9 +16,7 @@
   h6 {
       font-size: 15px;
   }
-  #cupon h2{
-      font-family: 'Bowlby One SC'!important;
-  }
+
   .h-i{
     font-size: 30px;
 
@@ -39,7 +37,7 @@
     </ion-nav-title>
   <ion-content id ="cupon" style="top:61px">
       <div  ng-if="cupon.image_id == null">
-          <img src="img/promo1.jpg" style="width: 100%;height: 200px;">
+          <img src="img/slides/1.png" alt="" class="responsive">
       </div>
       <div ng-if="cupon.image_id != null">
           <img ng-src="http://skizzordz.exis.cl:8000/image/scale/600/600px/{{cupon.image_id}}" style="width: 100%;height: 200px;">
@@ -55,6 +53,7 @@
       <div class="col" align="center">
         <h2>{{cupon.description}}</h2>
         <h4><strong class="colorP">$ {{cupon.price}}</strong></h4>
+
       </div>
     </div>
     <div class="row">
@@ -74,7 +73,7 @@
       </div>
       <div class="col" align="center">
         <h4 class="h-i"><strong class="colorP"><i class="icon ion-clock"></i></strong></h4>
-        <h6 class="mb"> {{cupon.store.hours}}</h6>
+        <h6 class="mb" ng-repeat="h in cupon.horario">{{h}}</h6>
       </div>
     </div>
 

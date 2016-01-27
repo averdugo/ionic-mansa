@@ -14,7 +14,6 @@
       <div class="container"><h1 style="margin-top: 30px;color: #ee4931!important;">CREAR CUPON</h1></div>
     <form ng-submit="doCupon()">
       <div class="list">
-
         <label class="item item-input">
           <span class="input-label ">Descripcion</span>
           <input type="text" ng-model="cuponData.description">
@@ -27,18 +26,7 @@
           <span class="input-label ">Stock</span>
           <input type="text" ng-model="cuponData.stock">
         </label>
-
-
-            <div class="button-bar" style="margin-top:30vh">
-                <button class="button button-balanced" type="submit">Crear</button>
-                <button type="button" class="button button-assertive" name="button" ng-click="getPhoto()">Tomar Foto</button>
-            </div>
-
-
-
-        </label>
       </div>
     </form>
-
   </ion-content>
 </ion-modal-view>

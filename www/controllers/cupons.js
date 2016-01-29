@@ -1,9 +1,19 @@
 angular.module('starter')
 
-    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB) {
+    .controller('CuponsController', function ($scope, $http, $ionicLoading, $ionicModal, ngFB, $ionicSlideBoxDelegate) {
 
         $ionicLoading.show({
             template: '<ion-spinner icon="ripple"></ion-spinner>'
+        });
+
+        $http.get(Server+"slideshow/").success(function (data) {
+            $scope.slides = data;
+            angular.forEach($scope.slides,function(v,k){
+                $scope.slides[k].imagesrc = Server+"image/"+v.image.id;
+            });
+            $ionicSlideBoxDelegate.update();
+        }).error(function (err) {
+            console.log('fuck you');
         });
 
         var posOptions = {timeout: 10000, enableHighAccuracy: true};
@@ -18,6 +28,11 @@ angular.module('starter')
 
                 $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=2000").success(function (data) {
                     $scope.cupons=data;
+                    angular.forEach($scope.cupons,function(v,k){
+                        if (v.store.logo_id != null) {
+                            $scope.cupons[k].logo = Server+"image/"+v.store.logo_id;
+                        }
+                    });
                     $ionicLoading.hide();
                 }).error(function (err) {
                     $ionicLoading.show({

@@ -14,6 +14,11 @@ angular.module('starter')
 
                    $http.get(Server+"store/?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
                         $scope.stores=data;
+                        angular.forEach($scope.stores,function(v,k){
+                            if (v.logo_id != null) {
+                                $scope.stores[k].logo = Server+"image/"+v.logo_id;
+                            }
+                        });
                         $ionicLoading.hide();
                    }).error(function (err) {
                        $ionicLoading.show({

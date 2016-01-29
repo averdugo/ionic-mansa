@@ -24,6 +24,13 @@
     position: absolute;
     font-size: 30px;
 }
+.iInfo{
+
+    color: white;
+margin-top: 10px;
+font-size: 20px;
+margin-bottom: 0;
+}
 
 </style>
 <ion-view view-title="" id="cupons">
@@ -33,7 +40,10 @@
     </ion-nav-title>
   <ion-content style="top:61px">
 
-    <div class="container cTiu"><h1 style="margin-bottom:0px;color:white">Local {{cupons[0].store.name}}</h1></div>
+    <div class="container cTiu">
+        <h1 style="margin-bottom:0px;color:white">Local {{cupons[0].store.name}}</h1>
+        <p class="iInfo" ng-click="info()"><i class="ion-information-circled"></i></p>
+    </div>
 
     <div style="margin-top: 10px;">
         <div class="list list-cupons" ng-repeat="cupon in cupons">
@@ -42,7 +52,7 @@
                     <img src="img/icon.png" style="top: 10px;">
                 </div>
                 <div class=" item-avatar" ng-if="cupon.store.logo_id != null" style="    ">
-                    <img src="http://hydra.lan:8000/image/{{cupon.store.logo_id}}" style="top: 10;">
+                    <img ng-src="{{cupon.logo}}" style="top: 10;">
                 </div>
                 <h2 class="desc">{{cupon.title}}</h2>
                 <p class="">

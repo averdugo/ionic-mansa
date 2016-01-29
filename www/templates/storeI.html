@@ -1,0 +1,58 @@
+<style media="screen">
+    .list-inset{
+        background-color: transparent;
+    }
+    .angular-google-map-container { height: 300px;margin-bottom: 20px}
+</style>
+<ion-modal-view>
+  <ion-header-bar style="border:none">
+    <h1 class="title" style="right:0"><img src="img/logo.png" class="logo"></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeInfo()"><i class="ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="top:61px">
+
+      <div class="container cTiu">
+          <h1 style="margin-bottom:0px;">INFO DEL LOCAL</h1>
+      </div>
+      <div class="list list-inset info" style="margin-bottom:60px;margin-top:0px">
+          <div class="" style="    text-align: center;" ng-if="cupon.store.logo_id == null" >
+              <img src="img/icon.png" style="top: 10px;width:50%">
+          </div>
+          <div class="" ng-if="cupon.store.logo_id != null" style="    text-align: center;" >
+              <img ng-src="http://hydra.lan:8000/image/{{cupon.store.logo_id}}" style="top: 10;width:50%">
+          </div>
+          <div class="item">
+            Nombre : <span>{{store.name}}</span>
+          </div>
+          <div class="item">
+            Telefono : <span>{{store.phone}}</span>
+          </div>
+          <div class="item">
+            Dirección : <span>{{store.address}}</span>
+          </div>
+          <div class="item">
+            Comuna : <span>{{store.comuna}}</span>
+          </div>
+          <div class="item">
+            Region : <span>{{store.region}}</span>
+          </div>
+          <div class="item">
+            Tipo : <span>{{store.storetype.label}}</span>
+          </div>
+          <div class="item">
+            Horario : <span ng-repeat="h in store.horario">{{h}}</span>
+          </div>
+          <div class="col" align="center" style="margin-bottom:40px">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="false" data-tap-disabled="true">
+                <ui-gmap-marker idKey='0' coords='coords.center' draggable="false"></ui-gmap-marker>
+            </ui-gmap-google-map>
+          </div>
+
+
+
+      </div>
+
+  </ion-content>
+</ion-modal-view>

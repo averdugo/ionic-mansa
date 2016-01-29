@@ -117,7 +117,6 @@ angular.module('starter')
             method: 'GET',
             url: Server+"cupon/"+id+"?g="+g
         }).then(function successCallback(data) {
-            console.log(data.data);
             var horario = data.data.store.hours;
             $scope.cupon=data.data;
             $scope.cupon.horario=[];

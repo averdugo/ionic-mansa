@@ -13,21 +13,18 @@
 </style>
 <ion-view id="cupons">
     <ion-nav-title>
-
         <img src="img/logo.png" class="logo">
     </ion-nav-title>
-
     <ion-content style="top:61px">
         <div class="container cTiu"><h1 style="margin-bottom:0px;">LOCALES</h1></div>
         <div class="list list-cupons" ng-repeat="store in stores">
             <a class="item item-thumbnail-left" href="#/app/store/{{store.id}}" style="padding-left: 80px;">
-                <div class=" item-avatar" ng-if="store.logo_id == null" style="   ">
+                <div class=" item-avatar" ng-if="store.logo_id == null">
                     <img src="img/icon.png" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
                 </div>
-                <div class=" item-avatar" ng-if="store.logo_id != null" style="    ">
-                    <img src="http://hydra.lan:8000/image/{{store.logo_id}}" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
+                <div class=" item-avatar" ng-if="store.logo_id != null">
+                    <img ng-src="{{store.logo}}" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
                 </div>
-
                 <div style="width: 65%;">
                     <h2 class="desc" style="margin-top:10px">{{store.name}}</h2>
                     <p style="color:white;white-space: normal;">{{store.address}}</p>

@@ -23,9 +23,9 @@
                     <img src="img/icon.png" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
                 </div>
                 <div class=" item-avatar" ng-if="cupon.store.logo_id != null" style="    ">
-                    <img src="http://hydra.lan:8000/image/{{cupon.store.logo_id}}" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
+                    <img ng-src="http://hydra.lan:8000/image/{{cupon.store.logo_id}}" style="min-width: 55px!important;min-height: 55px!important;top: 0px;">
                 </div>
-                
+
                 <div style="width: 65%;">
                     <h2 class="desc colorP" style="font-family:'Cabin'!important;font-weight:bold">{{codigo.desc}}</h2>
                     <p style="color: #fff;">{{codigo.name}}</p>

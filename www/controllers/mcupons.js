@@ -24,18 +24,14 @@ angular.module('starter')
         });
 
         function qrRedem(id){
-            $scope.closeqrG();
-            $scope.ranking();
             var device= localStorage["device_id"];
             $http({
                 method: 'GET',
-                url: Server+"redemption/?cupon_id="+id+"&device_id="+device
+                url: Server+"redemption/device/"+device+"/"+id
             }).then(function successCallback(data) {
-                console.log(data);
-                if (data.data.length >= 1) {
                     $ionicLoading.show({
                         template: '<div class="alertL"><h1>GENIAL!</h1><p>CUPON CANJEADO</p></div>',
-                        duration: 6000
+                        duration: 3000
                     });
                     var cuponStorage= JSON.parse(localStorage["cupones"]);
                     for (var i = 0; i < cuponStorage.length; i++) {
@@ -47,19 +43,12 @@ angular.module('starter')
                     localStorage.cupones = JSON.stringify(cuponStorage);
                     $scope.closeqrG();
                     $scope.ranking();
-                    $scope.cIdr=id;
-                }
+                    $scope.cIdr=data.data.id;
+
             }, function errorCallback(response) {
-                $ionicLoading.show({
-                    template: '<div class="alertL"><h1>¡UPS!</h1><p>CUPON NO VALIDO</p></div>',
-                    duration: 6000
-                });
+
                 console.log(response)
             });
-
-
-
-
         }
 
         $scope.qrS = function(id) {
@@ -67,15 +56,18 @@ angular.module('starter')
             var single_object = id +","+device;
             $scope.string = single_object;
             $scope.modal.show();
-            promise = $interval(function(){ qrRedem(id); }, 4000);
+            promise = $interval(function(){ qrRedem(id); }, 6000);
         };
 
         $scope.closeqrG = function() {
             $scope.modal.hide();
             $interval.cancel(promise);
         };
+        $scope.closeRank = function() {
+            $scope.modal2.hide();
+            $interval.cancel(promise);
+        };
         $scope.rank=function(a){
-
             switch(a) {
                 case '1':
                     document.getElementById("r2").className="ion-ios-star-outline ro";
@@ -123,10 +115,9 @@ angular.module('starter')
             $scope.modal2.show();
         };
 
-
-
         $scope.doRate= function(){
-            console.log($scope.rating+" "+$scope.cIdr);
+
+            var id = $scope.cIdr;
             var device= localStorage["device_id"];
             $http({
                 method: 'PATCH',
@@ -136,9 +127,9 @@ angular.module('starter')
                 console.log(data);
                 $ionicLoading.show({
                     template: '<div class="alertL"><h1>GRACIAS</h1><p>CUPON EVALUADO</p></div>',
-                    duration: 6000
+                    duration: 3000
                 });
-
+                $scope.modal2.hide();
             }, function errorCallback(response) {
                 console.log(response)
             });

@@ -28,7 +28,10 @@ angular.module('starter')
 
                 $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=2000").success(function (data) {
                     $scope.cupons=data;
+
                     angular.forEach($scope.cupons,function(v,k){
+                        v.store.distance = Math.round(v.store.distance);
+                        v.store.distance = v.store.distance / 1000;
                         if (v.store.logo_id != null) {
                             $scope.cupons[k].logo = Server+"image/"+v.store.logo_id;
                         }
@@ -152,10 +155,19 @@ angular.module('starter')
             Geolocation
                  .getCurrentPosition(posOptions)
                  .then(function (geo) {
-                    var d = "10000";
-                    var g = geo.lat+","+geo.long+","+d;
+
+                    var d = "2000";
+                    var g = geo.coords.latitude+","+geo.coords.longitude+","+d;
                     $http.get(Server+"cupon/?g="+g).success(function (data) {
                         $scope.cupons=data;
+                        angular.forEach($scope.cupons,function(v,k){
+                            v.store.distance = Math.round(v.store.distance);
+                            v.store.distance = v.store.distance / 1000;
+                            //v.store.distance = Math.round(v.store.distance,-1);
+                            if (v.store.logo_id != null) {
+                                $scope.cupons[k].logo = Server+"image/"+v.store.logo_id;
+                            }
+                        });
                     })
                     .finally(function() {
                       // Stop the ion-refresher from spinning

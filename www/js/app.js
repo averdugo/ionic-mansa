@@ -1,4 +1,4 @@
-const Server="http://hydra.lan:8000/";
+const Server="http://skizzordz.exis.cl:8000/";
 //"http://hydra.lan:8000/";
 //"http://skizzordz.exis.cl:8000/"
 // Ionic Starter App

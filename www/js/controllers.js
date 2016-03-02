@@ -49,6 +49,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
         $scope.doLogin = function() {
 
             $http({
+                
                 method: 'POST',
                 data: $scope.loginData,
                 headers: {'Content-Type': 'application/json'},

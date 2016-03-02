@@ -8,6 +8,7 @@ angular.module('starter')
 
         $http.get(Server+"slideshow/").success(function (data) {
             $scope.slides = data;
+            console.log(data);
             angular.forEach($scope.slides,function(v,k){
                 $scope.slides[k].imagesrc = Server+"image/"+v.image.id;
             });
@@ -24,11 +25,8 @@ angular.module('starter')
                    var lat  = position.coords.latitude;
                    var long = position.coords.longitude;
 
-
-
-                $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=2000").success(function (data) {
+                $http.get(Server+"cupon/?lat="+lat+"&lon="+long+"&maxdist=4000").success(function (data) {
                     $scope.cupons=data;
-
                     angular.forEach($scope.cupons,function(v,k){
                         v.store.distance = Math.round(v.store.distance);
                         v.store.distance = v.store.distance / 1000;

@@ -3,6 +3,18 @@ const Server="http://skizzordz.exis.cl:8000/";
 //"http://skizzordz.exis.cl:8000/"
 // Ionic Starter App
 
+function handleOpenURL(url) {
+  if (url.substr(0, 13) == 'mansapromo://')
+  {
+    localurl = url.substr(13);
+    // go to a cupon
+    if (localurl =~ /^app\/cupon\/[a-zA-Z0-9]+$/)
+    {
+      location.href = '#' + localurl;
+    }
+  }
+}
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires',[]

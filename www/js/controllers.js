@@ -49,7 +49,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
         $scope.doLogin = function() {
 
             $http({
-                
+
                 method: 'POST',
                 data: $scope.loginData,
                 headers: {'Content-Type': 'application/json'},
@@ -87,7 +87,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 localStorage.setItem("device_id", data.data.device_id);
                 localStorage["user"] = JSON.stringify($scope.loginData);
                 var storedUser = JSON.parse(localStorage["user"]);
-                location.href="#/app/cupons";
+                window.history.back();
                 $ionicLoading.hide();
             }, function errorCallback(response) {
                 console.log(response)
@@ -118,7 +118,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                                 console.log(data);
                                 localStorage.setItem("device_id", data.data.device_id);
                                 localStorage["user"] = JSON.stringify( $scope.user );
-                                location.href="#/app/cupons";
+                                window.history.back();
                                 $ionicLoading.hide();
                             }, function errorCallback(response) {
                                 console.log(response)

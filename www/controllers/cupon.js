@@ -1,5 +1,5 @@
 angular.module('starter')
- .controller('CuponCtrl', function($scope, $cordovaSocialSharing, $parse,$stateParams, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
+ .controller('CuponCtrl', function($scope, $cordovaSocialSharing, $parse,$stateParams,$timeout, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
 
    $ionicLoading.show({
       template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -14,6 +14,10 @@ angular.module('starter')
     $scope.string ="";
     var id= $stateParams.cuponId;
     var dia = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
+
+    function goLogin(){
+        location.href='/#/app/inicio'
+    }
 
     $scope.shareF = function(a) {
 
@@ -73,26 +77,38 @@ angular.module('starter')
 
     $scope.saveQr = function(a,b,c,d,e) {
         var uuid = localStorage["device_id"];
-        var qrcode = JSON.stringify({cupon_id: a, device_id: uuid});
-        $scope.string =qrcode;
-        $scope.modal.show();
 
-        var sCupon = {
-          "uuid" : uuid,
-          "cupon_id" : a,
-          "desc" : b,
-          "price" : c,
-          "address" : d,
-          "name" : e
+        if (uuid == undefined) {
+            $ionicLoading.show({
+                template: '<div class="alertL"><h1>¡UPS!</h1><p>Para Obtener el Cupon usted Debe registrarse</p></div>',
+                duration: 3000
+            });
+            $timeout(goLogin, 3000);
+
+        }else{
+            var qrcode = JSON.stringify({cupon_id: a, device_id: uuid});
+            $scope.string =qrcode;
+            $scope.modal.show();
+
+            var sCupon = {
+              "uuid" : uuid,
+              "cupon_id" : a,
+              "desc" : b,
+              "price" : c,
+              "address" : d,
+              "name" : e
+            }
+
+            var a = [];
+            if (localStorage.getItem('cupones')) {
+              a = JSON.parse(localStorage.getItem('cupones'));
+            }
+
+            a.push(sCupon);
+            localStorage.setItem('cupones', JSON.stringify(a));
         }
 
-        var a = [];
-        if (localStorage.getItem('cupones')) {
-          a = JSON.parse(localStorage.getItem('cupones'));
-        }
 
-        a.push(sCupon);
-        localStorage.setItem('cupones', JSON.stringify(a));
 
     };
 

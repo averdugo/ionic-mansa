@@ -8,7 +8,6 @@ angular.module('starter')
 
         $http.get(Server+"slideshow/").success(function (data) {
             $scope.slides = data;
-            console.log(data);
             angular.forEach($scope.slides,function(v,k){
                 $scope.slides[k].imagesrc = Server+"image/"+v.image.id;
             });

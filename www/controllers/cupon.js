@@ -1,5 +1,5 @@
 angular.module('starter')
- .controller('CuponCtrl', function($scope, $cordovaSocialSharing, $parse,$stateParams,$timeout, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
+ .controller('CuponCtrl', function($scope, $cordovaSocialSharing,$state, $parse,$stateParams,$timeout, $http, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, uiGmapGoogleMapApi) {
 
    $ionicLoading.show({
       template: '<ion-spinner icon="ripple"></ion-spinner>'
@@ -8,15 +8,16 @@ angular.module('starter')
     $ionicModal.fromTemplateUrl('templates/qrG.html', {
       scope: $scope
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.modal1 = modal;
     });
+
 
     $scope.string ="";
     var id= $stateParams.cuponId;
     var dia = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
 
     function goLogin(){
-        location.href='/#/app/inicio'
+        $state.go("app.inicio");
     }
 
     $scope.shareF = function(a) {
@@ -72,7 +73,7 @@ angular.module('starter')
     }
 
     $scope.closeqrG = function() {
-        $scope.modal.hide();
+        $scope.modal1.hide();
     };
 
     $scope.saveQr = function(a,b,c,d,e) {
@@ -88,7 +89,7 @@ angular.module('starter')
         }else{
             var qrcode = JSON.stringify({cupon_id: a, device_id: uuid});
             $scope.string =qrcode;
-            $scope.modal.show();
+            $scope.modal1.show();
 
             var sCupon = {
               "uuid" : uuid,

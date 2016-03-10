@@ -130,6 +130,8 @@ angular.module('starter', ['ionic','uiGmapgoogle-maps', 'starter.controllers','n
         }
       });
     // alternatively, register the interceptor via an anonymous factory
+    $httpProvider.defaults.withCredentials = true;
+    
     $httpProvider.interceptors.push(function($q) {
       return {
        request: function(config) {

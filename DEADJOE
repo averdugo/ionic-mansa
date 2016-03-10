@@ -1,0 +1,22 @@
+
+*** These modified files were found in JOE when it aborted on Wed Mar  9 22:35:34 2016
+*** JOE was aborted because the terminal closed
+
+*** File '/home/merki/Codes/cordovaProjects/ionic-mansa/.git/MERGE_MSG'
+
+
+Merge branch 'master' of skizzordz.exis.cl:ionic-mansa
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+.bashr
+.bashrc
+/home/merki/Codes/cordovaProjects/ionic-mansa/.git/MERGE_MSG
+pg_hba.conf
+pg_hba.conf
+/home/merki/Codes/cordovaProjects/ionic-mansa/.git/MERGE_MSG
